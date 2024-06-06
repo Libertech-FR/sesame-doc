@@ -1,33 +1,19 @@
----
-home: true
-title: Home
-heroImage: https://vuejs.press/images/hero.png
-actions:
-  - text: Get Started
-    link: /getting-started.html
-    type: primary
+# Introduction
 
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
-    type: secondary
 
-features:
-  - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
-  - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
+## A quoi ça sert
+Sesame est un gestionnaire d'identité. Il permet de créer les identités sur les differents serveurs et environnements de votre SI
 
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
----
+## Ses composantes
 
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
+* **Sesame-Orchestrateur** : veritablement le coeur de sesame. Il gère les differentes identités, les stocke et gère leur cycle de vie. Il transmettra les ordres aux sesame-daemon qui se chargera d'executer les bonnes commandes sur les differents serveurs
 
-[default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page
+* **Sesame-app-manager** : c'est l inteface d'administration pour Sesame.
+
+* **Sesame-daemon** : Il transmet les differents ordres de l'orchestrateur aux differents backends
+
+* **Sesame-Backends** : Snippets qui peuvent être écrits dans differents language et qui executent une tâche précise
+
+## Un exemple
+
+Vous êtes dans un monde multi OS multi service. Quand un utilisateur arrive vous devez créer son compte dans différents systemes. Creez le dans Sesame et il se chargera du reste
