@@ -22,8 +22,9 @@ theme: defaultTheme({
           // prefix will be prepended to relative paths
           prefix: "/installation/",
           children: [
-            'installation-server', // resolved to `/guide/introduction.md`
-            'installation-daemon', // resolved to `/guide/getting-started.md`
+             'installation-server',  
+             'installation-daemon',
+             'installation-taiga' 
           ],
         },
       ],

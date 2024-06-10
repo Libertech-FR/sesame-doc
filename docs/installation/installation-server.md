@@ -81,8 +81,6 @@ command make OK
 command curl OK
 Répertoire d'installation (/data/sesame) :
 Url du serveur (http(s)://(nom|ip):http://192.168.0.1
-Nom de domaine des emails : mondomaine.fr
-Numero d'etablissement SUPANN : 123456U
 ```
 * Repertoire : Repertoire de l installation (par defaut où vous avez lancé le script)
 * Url du serveur : L'url à appeler (adresse de la machine ou nom avec le protocole
@@ -103,16 +101,6 @@ Après avoir télechargé les images le script vous demande :
 ```
 le couple username et password seront le login de l'administrateur sur l'interface
 
-```
-Parametres de connexion à TAIGA
--------------------------------
-URL TAIGA (https://taiga.archi.fr) :https://taiga.archi.fr
-PORT (443) : 443
-UTILISATEUR TAIGA :monlogintaiga
-MOT DE PASSE : monpasswdtaiga
-MOT DE PAS ENSA : monmdpensataiga
-```
-Renseignez vos identifiants pour la connexion taiga
 
 ```
 ------------------------------
@@ -122,10 +110,6 @@ Pour lancer l'importation taiga dans le repertoire /data/sesame lancez la comman
 ```
 
 *Sesame est installé*
-vous pouvez lancer votre premier import taiga
-
-```
-make sesame-import-taiga
 ```
 
-L'etape suivante est l'installation des backends
+L'etape suivante est l'installation des imports specifiques
