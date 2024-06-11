@@ -26,7 +26,16 @@ theme: defaultTheme({
              'installation-daemon',
              'installation-taiga' 
           ],
-        },
+        },{
+          text: 'Configuration',
+          prefix: '/configuration',
+          children: [ 
+             'architecture',
+             'data',
+             'validation',
+             'exemple'
+          ]
+	}
       ],
     },
   }),
