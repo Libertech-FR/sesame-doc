@@ -33,7 +33,7 @@ theme: defaultTheme({
              'architecture',
              'data',
              'validation',
-             'exemple'
+             'formulaire'
           ]
 	}
       ],
