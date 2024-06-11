@@ -9,6 +9,7 @@ description: Architecture de l'installation
 Si vous avez installé Sesame avec le script d'installation, vous avez cette structure dans le répertoire d'installation
 
 ```
+.env
 docker-compose.yml
 Makefile
 configs/
@@ -30,6 +31,16 @@ import
     ├── .env
     ├── cache
     └── data
+```
+### .env
+
+```
+#Clé pour la génération du jeton JWWT
+JWT_SECRET='w1CMHnr{n!4ccEkaS1%4a8,[y)rFO{z4'
+# Url du serveur
+HOST=http://10.22.32.67
+# Type de connexion (true ou false)
+TLS=false
 ```
 ### docker-compose.yml
  Fichier de configuration Docker Compose pour lancer les services.

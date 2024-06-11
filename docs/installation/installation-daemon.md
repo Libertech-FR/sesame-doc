@@ -161,7 +161,18 @@ Ce fichier decrit, selon les actions, les scripts qui seront lancés
 Le seul paramètre que vous pouvez regler est :
 * action : (false|true) Rend actif le backend 
 
+# Fichier de paramétrage du sesame-daemon
 
+Un fichier de paramètre est present  **/etc/default/default**
 
+```
+SESAME_LOG_LEVEL=INFO
+SESAME_REDIS_URI=redis://localhost:6379/0
+SESAME_BACKENDS_PATH=/var/lib/sesame-daemon/backends
+SESAME_NAME_QUEUE=backend
+SESAME_REDIS_USER=monUser
+SESAME_REDIS_PASSWORD=xx
+
+```
 
 
