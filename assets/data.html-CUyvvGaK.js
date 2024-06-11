@@ -1,0 +1,67 @@
+import{_ as s,c as n,o as e,a as i}from"./app-BY91BexH.js";const a={},l=i(`<h1 id="principe" tabindex="-1"><a class="header-anchor" href="#principe"><span>Principe</span></a></h1><p>Sesame possède un modele de données souple. Il est basé un peu comme le protocole LDAP Sur des schémas de données. e Le schema obligatoire est InetOrgPerson</p><p>Les schemas sont definis dans le repertoire configs/sesame-orchestrator/validations. Il y a un fichier par schema.</p><p>Chaque schema est dans un fichier yml</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">---</span>
+<span class="line">&quot;$schema&quot;: http://json-schema.org/draft-07/schema#</span>
+<span class="line">type: object</span>
+<span class="line">properties:</span>
+<span class="line">  cn:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Common name of the inetOrgPerson.</span>
+<span class="line">  sn:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Surname of the inetOrgPerson.</span>
+<span class="line">  uid:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: UID of the inetOrgPerson.</span>
+<span class="line">  displayName:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Display name of the inetOrgPerson.</span>
+<span class="line">  facsimileTelephoneNumber:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Facsimile telephone number of the inetOrgPerson.</span>
+<span class="line">  givenName:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Given name of the inetOrgPerson.</span>
+<span class="line">  labeledURI:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: URI associated with the inetOrgPerson.</span>
+<span class="line">  mail:</span>
+<span class="line">    type: string</span>
+<span class="line">    format: email</span>
+<span class="line">    description: Email address of the inetOrgPerson.</span>
+<span class="line">  mobile:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Mobile number of the inetOrgPerson.</span>
+<span class="line">  postalAddress:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Postal address of the inetOrgPerson.</span>
+<span class="line">  preferredLanguage:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Preferred language of the inetOrgPerson.</span>
+<span class="line">  telephoneNumber:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Telephone number of the inetOrgPerson.</span>
+<span class="line">  title:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Title of the inetOrgPerson.</span>
+<span class="line">  userCertificate:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: User certificate of the inetOrgPerson.</span>
+<span class="line">  userPassword:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: User password of the inetOrgPerson.</span>
+<span class="line">required:</span>
+<span class="line">- cn</span>
+<span class="line">- sn</span>
+<span class="line">- uid</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Le fichier yml porte le nom du schema et contient :</p><ul><li>$shema et type : ces deux champs sont des constantes et sont en tete du fichier</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">---</span>
+<span class="line">&quot;$schema&quot;: http://json-schema.org/draft-07/schema#</span>
+<span class="line">type: object</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>properties : Ce paragraphe decrit chaque champ. Chaque champ contient un type et une description</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">properties : </span>
+<span class="line">  title:</span>
+<span class="line">    type: string</span>
+<span class="line">    description: Title of the inetOrgPerson.</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>required : Definit les champs obligatoire pour l&#39;identité</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">required:</span>
+<span class="line">- cn</span>
+<span class="line">- sn</span>
+<span class="line">- uid</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Pour savoir les types supportés se reférer à la documentation</p><p><a href="validation">Documentation pour la définition des données </a></p>`,14),t=[l];function r(d,p){return e(),n("div",null,t)}const o=s(a,[["render",r],["__file","data.html.vue"]]),v=JSON.parse('{"path":"/configuration/data.html","title":"Principe","lang":"en-US","frontmatter":{"lang":"en-US","title":"Principe","description":"Configuration des données"},"headers":[],"git":{"updatedTime":1718088493000,"contributors":[{"name":"Alain Abbas","email":"alain.abbas@libertech.fr","commits":1}]},"filePathRelative":"configuration/data.md"}');export{o as comp,v as data};
