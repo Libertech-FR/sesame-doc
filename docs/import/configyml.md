@@ -221,7 +221,7 @@ Exemple :
 On veut definir une adresse email qui soit prenom.nom@mondomaine.com. On veut aussi que les espace soitent remplacés par un "-"
 
 ```
-```
+
 mapping: 
   inetOrgPerson.employeeNumber: employeeNumber
   $setOnInsert.inetOrgPerson.uid: 
