@@ -9,6 +9,9 @@ Il est au format yml
 
 ```
 [NOM_DU_FICHIER]:
+   primaryKey: //section non obligatoire
+     - [key1]
+     - [key2]
    mapping:
      [nom_champs_sesame]: "[nom_champs_json]"
      ...
@@ -68,7 +71,21 @@ Fichier de données associée (dans cache/import.json
     ]
 }
 ```
+### Section primaryKey
+Par defaut les identités sont recherchées avec le couple "employeeNumber" et "employeeType"
 
+Ce comportement peut être modifié en ajoutant la section **primaryKey** qui n'est pas obligatoire 
+
+Exemple : on veut pouvoir rechercher les identités par le champ uid. Naturellement il faut que le champs soit present dans la section mapping
+
+```
+import.json:
+  primaryKey:
+    - inetOrgPerson.uid
+  mapping:
+    inetOrgPerson.uid: uid
+    inetOrgPerson.title: title
+```
 ### Section mapping 
 
 Ce paragraphe, dans le fichier config.yml sert à definir qui va où.
