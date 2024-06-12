@@ -35,7 +35,15 @@ theme: defaultTheme({
              'validation',
              'formulaire'
           ]
-	}
+	},
+        {
+          text: 'Importation',
+          prefix: '/import',
+          children: [
+             'configuration',
+             'configyml'
+          ]
+        }
       ],
     },
   }),

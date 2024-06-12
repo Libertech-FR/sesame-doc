@@ -266,10 +266,11 @@ properties:
       description: "Quota messagerie"
    sogxdisableflag:
       type: "number"
-      integer: true
-      min: 0
-      max: 1
       description: "Disable/enable"
+   proxyaddress:
+      type: "array"
+      items: 
+         type: string 
 
 ```
 
