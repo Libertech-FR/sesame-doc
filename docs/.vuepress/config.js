@@ -42,6 +42,7 @@ theme: defaultTheme({
           children: [
              'configuration',
              'configyml'
+             'importtaiga'
           ]
         }
       ],
