@@ -8,12 +8,13 @@ Sesame est un gestionnaire d'identité. Il permet de créer les identités sur l
 
 * **Sesame-Orchestrateur** : veritablement le coeur de sesame. Il gère les differentes identités, les stocke et gère leur cycle de vie. Il transmettra les ordres aux sesame-daemon qui se chargera d'executer les bonnes commandes sur les differents serveurs
 
-* **Sesame-app-manager** : c'est l inteface d'administration pour Sesame.
+* **Sesame-app-manager** : c'est l interface d'administration pour Sesame.
 
 * **Sesame-daemon** : Il transmet les differents ordres de l'orchestrateur aux differents backends
 
 * **Sesame-Backends** : Snippets qui peuvent être écrits dans differents language et qui executent une tâche précise
 * **Sesame-crawler** : Importateur de données vers Sesame
+* **Sesame-gestion-mdp** : Frontal de gestion du mot de passe pour les utilisateurs
 
 ## Un exemple
 

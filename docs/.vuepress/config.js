@@ -24,7 +24,8 @@ theme: defaultTheme({
           children: [
              'installation-server',  
              'installation-daemon',
-             'installation-taiga' 
+             'installation-taiga',
+              'gestion-mdp'
           ],
         },{
           text: 'Configuration',
@@ -33,7 +34,8 @@ theme: defaultTheme({
              'architecture',
              'data',
              'validation',
-             'formulaire'
+             'formulaire',
+              'config-gestion-mdp'
           ]
 	},
         {
@@ -41,7 +43,7 @@ theme: defaultTheme({
           prefix: '/import',
           children: [
              'configuration',
-             'configyml'
+             'configyml',
              'importtaiga'
           ]
         }
