@@ -46,7 +46,17 @@ theme: defaultTheme({
              'configyml',
              'importtaiga'
           ]
+        },
+       {
+          text: 'Backends',
+          prefix: '/backends',
+          children: [
+             'backends',
+             'backend_AD',
+             'backend_LDAP'
+          ]
         }
+
       ],
     },
   }),

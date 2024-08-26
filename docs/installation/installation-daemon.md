@@ -59,8 +59,21 @@ juin 04 18:11:30 docker2 sesame-daemon[975938]: [Nest] 975938  - 2024-06-04 18:1
 juin 04 18:11:30 docker2 sesame-daemon[975938]: [Nest] 975938  - 2024-06-04 18:11:30     LOG [BackendConfigService] /var/lib/sesame-daemon/back>
 juin 04 18:11:30 docker2 sesame-daemon[975938]: [Nest] 975938  - 2024-06-04 18:11:30     LOG [BackendRunnerService] OnApplicationBootstrap init>
 ```
+# Fichier de paramétrage du sesame-daemon
 
-## Installation du backend LDAP
+Un fichier de paramètre est present  **/etc/default/default**
+
+```
+SESAME_LOG_LEVEL=INFO
+SESAME_REDIS_URI=redis://localhost:6379/0
+SESAME_BACKENDS_PATH=/var/lib/sesame-daemon/backends
+SESAME_NAME_QUEUE=backend
+SESAME_REDIS_USER=monUser
+SESAME_REDIS_PASSWORD=xx
+
+```
+
+# Installation du backend LDAP
 
 télechargez le paquet debian (.deb) avec ce lien
 
@@ -92,13 +105,33 @@ Installez les dépendances :
 ```
 
 ## Configuration du backend LDAP
+Une fois l'installation du paquets vous devez activer le backend. 
 
-Copiez le fichier exemple sur config.conf
+Vous pouvez activer plusieurs fois le backendn si par exemple vous avez 2 serveurs Ldap differents pour les populations.
+
+Allez dans /var/lib/sesame-daemon/backends-modules/openldap
+
+Lancer ./install.sh 
 
 ```
-cd /var/lib/sesame-daemon/backends/01openldap/etc
-cp config.conf.exemple config.conf
+Deploiment du module LDAP
+La position determinera l'ordre d'execution des backends (comme dans init.d)
+Numero de demarrage du module (2 positions):02
+installation dans backends/02openldap
+Copie des fichiers dans ../../backends/02openldap
+Le backend a été installé dans ../../backends/02openldap
+Configuration
+Url du serveur ldap (ldap[s]://FDQN:PORT : ldaps://myldap.mydomain.com
+Dn d'authentification (doit avoir les droits d'ecriture) : cn=manager,cn=internal,dc=mydomain,dc=com
+Mot de passe : MonPassword!
+Base ldap : dc=mydomain,dc=com
+Branche pour les utilisateurs ex: ou=peoples : ou=peoples
+Attribut pour le Rdn : uid
+Génération du fichier de configuration
+Vous pouvez completer le fichier de configuration avec les parametres optionnels (voir README.md)
+Merci 
 ```
+Le script va génerer l'architecture dans backends et creer le fichier de configuration 
 
 ### config.conf :
 
@@ -109,6 +142,7 @@ password=MyPassword
 base=dc=mydomain,dc=com
 userbase=ou=peoples,dc=mydomain,dc=com
 rdnattribute=uid
+### Parametres facultatifs 
 branchForEtd=ou=Etudiants
 branchForAdm=ou=Administratifs
 branchForEsn=ou=Enseignants
@@ -138,41 +172,28 @@ description: 'Backend for openldap'
 active: false
 actions:
   IDENTITY_PASSWORD_CHANGE:
-    script: "changepasswd"
+    script: "changepwd.py"
     onError: 'stop'
   IDENTITY_PASSWORD_RESET:
-    script: "resetpasswd"
+    script: "resetpwd.py"
     onError: 'stop'
   IDENTITY_CREATE:
-    script: 'upsertidentity'
+    script: 'upsertidentity.py'
     onError: 'stop'
   IDENTITY_UPDATE:
-    script: 'upsertidentity'
+    script: 'upsertidentity.py'
     onError: 'stop'
   IDENTITY_DELETE:
-    script: 'dummy.sh'
+    script: 'delentity.py'
     onError: 'stop'
   PING_TARGET:
-    script: 'dummy.sh'
-    onError: 'continue'
+    script: 'ping.py'
+    onError: 'stop'
 ```
 Ce fichier decrit, selon les actions, les scripts qui seront lancés
 
 Le seul paramètre que vous pouvez regler est :
 * action : (false|true) Rend actif le backend 
 
-# Fichier de paramétrage du sesame-daemon
-
-Un fichier de paramètre est present  **/etc/default/default**
-
-```
-SESAME_LOG_LEVEL=INFO
-SESAME_REDIS_URI=redis://localhost:6379/0
-SESAME_BACKENDS_PATH=/var/lib/sesame-daemon/backends
-SESAME_NAME_QUEUE=backend
-SESAME_REDIS_USER=monUser
-SESAME_REDIS_PASSWORD=xx
-
-```
 
 
