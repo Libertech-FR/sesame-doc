@@ -94,7 +94,7 @@ Le principe de fonctionnenemt est le suivant :
 
 Les templates sont généré avec la librairie **jinja2**
 
-Vous trouverez la documentation Jinja à [https://jinja.palletsprojects.com/en/3.1.x/](https://jinja.palletsprojects.com/en/3.1.x/)
+Vous trouverez la documentation Jinja à [https://jinja.palletsprojects.com/en/3.1.x/templates/](https://jinja.palletsprojects.com/en/3.1.x/templates/)
 
 Les variables disponibles pour le template sont : 
 
