@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.13" />
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+
+      html.dark {
+        --c-bg: #22272e;
+      }
+
+      html,
+      body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+        document.documentElement.classList.toggle('dark', true)
+      }
+    </script>
+    <title>Introduction | Sesame</title><meta name="description" content="Sesame gestionnaire d'identités">
+    <link rel="preload" href="/sesame-doc/assets/style-DADYFlon.css" as="style"><link rel="stylesheet" href="/sesame-doc/assets/style-DADYFlon.css">
+    <link rel="modulepreload" href="/sesame-doc/assets/app-BVfWGSVO.js"><link rel="modulepreload" href="/sesame-doc/assets/backends.html-o-SOfW7t.js">
+    <link rel="prefetch" href="/sesame-doc/assets/index.html-CehCdW2x.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/backend_AD.html-BWU9PdSs.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/backend_LDAP.html-DvSyk7A3.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/configuration.html-Q28xCbfG.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/configyml.html-DNpTMooq.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/importtaiga.html-DTlNcswg.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/architecture.html-CRItf0T-.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/config-gestion-mdp.html-CfkRzoSP.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/data.html-BzGUoO8r.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/exemple.html-CovIhWZT.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/formulaire.html-MwT6mC9_.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/validation.html-maHdql96.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/gestion-mdp.html-BDtawOUe.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/get-started.html-Bpam19Rf.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/installation-daemon.html-EyW3mLaZ.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/installation-server.html-Cow-31-K.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/installation-taiga.html-DoYJRn4C.js" as="script"><link rel="prefetch" href="/sesame-doc/assets/404.html-sJMXoyU8.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container external-link-icon"><!--[--><header class="vp-navbar"><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/sesame-doc/"><!----><span class="vp-site-name" aria-hidden="true">Sesame</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar"><!----><!--[--><!--]--><ul class="vp-sidebar-items"><!--[--><li><a class="route-link auto-link vp-sidebar-item vp-sidebar-heading" href="/sesame-doc/" aria-label="Introduction"><!---->Introduction<!----></a><!----></li><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading">Installation <!----></p><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/installation/installation-server.html" aria-label="Installation rapide"><!---->Installation rapide<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/installation/installation-daemon.html" aria-label="Installation sesame-daemon"><!---->Installation sesame-daemon<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/installation/installation-taiga.html" aria-label="Installation import Taiga"><!---->Installation import Taiga<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/installation/gestion-mdp.html" aria-label="Installation du frontal de gestion du mot de passe"><!---->Installation du frontal de gestion du mot de passe<!----></a><!----></li><!--]--></ul></li><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading">Configuration <!----></p><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/configuration/architecture.html" aria-label="Architecture"><!---->Architecture<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/configuration/data.html" aria-label="Principe"><!---->Principe<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/configuration/validation.html" aria-label="Validation et description des données"><!---->Validation et description des données<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/configuration/formulaire.html" aria-label="Formulaire"><!---->Formulaire<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/configuration/config-gestion-mdp.html" aria-label="Configuration de la politique de mot de passe"><!---->Configuration de la politique de mot de passe<!----></a><!----></li><!--]--></ul></li><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading">Importation <!----></p><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/import/configuration.html" aria-label="Import des données"><!---->Import des données<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/import/configyml.html" aria-label="Configuration de l&#39;import"><!---->Configuration de l&#39;import<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/import/importtaiga.html" aria-label="Import depuis taiga"><!---->Import depuis taiga<!----></a><!----></li><!--]--></ul></li><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading active">Backends <!----></p><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link route-link-active auto-link vp-sidebar-item active" href="/sesame-doc/backends/backends.html" aria-label="Introduction"><!---->Introduction<!----></a><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link auto-link vp-sidebar-item" href="#workflow" aria-label="Workflow"><!---->Workflow<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="#comunication-avec-le-daemon" aria-label="Comunication avec le daemon"><!---->Comunication avec le daemon<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="#structure-d-un-backend" aria-label="Structure d&#39;un backend"><!---->Structure d&#39;un backend<!----></a><ul style="" class="vp-sidebar-children"><!--[--><li><a class="route-link auto-link vp-sidebar-item" href="#fichier-config-yml" aria-label="Fichier config.yml"><!---->Fichier config.yml<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="#les-actions" aria-label="Les actions :"><!---->Les actions :<!----></a><!----></li><!--]--></ul></li><li><a class="route-link auto-link vp-sidebar-item" href="#exemple-de-script-bash" aria-label="Exemple de script bash :"><!---->Exemple de script bash :<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="#exemple-de-backend-00dummy" aria-label="Exemple de backend 00dummy"><!---->Exemple de backend 00dummy<!----></a><!----></li><!--]--></ul></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/backends/backend_AD.html" aria-label="Backend AD"><!---->Backend AD<!----></a><!----></li><li><a class="route-link auto-link vp-sidebar-item" href="/sesame-doc/backends/backend_LDAP.html" aria-label="Backend LDAP"><!---->Backend LDAP<!----></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"><span>Introduction</span></a></h1><p>Les backends seront exécutés par <strong>sesame-daemon</strong> sur requete de sesame orchestrateur</p><h3 id="workflow" tabindex="-1"><a class="header-anchor" href="#workflow"><span>Workflow</span></a></h3><ul><li>Une identité est passée au statut A SYNCHRONISER</li><li>Une action sur le bouton de lancement de la synchronisation va effectuer un déclenchement des backends</li><li>les Backends vont être executés dans l&#39;ordre où il ont été mis dans le repertoire backends (<em>var/lib/sesame-daemon/backend</em>)</li><li>Le daemon enverra le resultat de l&#39;execution à l&#39;orchestrator</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">UI ---&gt; API &lt;--&gt; Daemon &lt;---&gt; Backends </span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h1 id="fonctionnement-d-un-backend" tabindex="-1"><a class="header-anchor" href="#fonctionnement-d-un-backend"><span>Fonctionnement d&#39;un backend</span></a></h1><p>Un backend peut être écrit dans n&#39;importe quel language, du moment que celui-ci sait gérer les entrées et sorties standard.</p><h2 id="comunication-avec-le-daemon" tabindex="-1"><a class="header-anchor" href="#comunication-avec-le-daemon"><span>Comunication avec le daemon</span></a></h2><p>Le daemon enverra sur l&#39;entrée standard du backend au format JSON l&#39;identité concernée :</p><p>Exemple :</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">{</span>
+<span class="line">  &quot;concernedTo&quot;: &quot;66c22991bdc3c9a7563a9d4f&quot;,</span>
+<span class="line">  &quot;payload&quot;: {</span>
+<span class="line">    &quot;identity&quot;: {</span>
+<span class="line">      &quot;action&quot;: &quot;IDENTITY_UPDATE&quot;,</span>
+<span class="line">      &quot;identity&quot;: {</span>
+<span class="line">        &quot;_id&quot;: &quot;66c22991bdc3c9a7563a9d4f&quot;,</span>
+<span class="line">        &quot;metadata&quot;: {</span>
+<span class="line">          &quot;createdBy&quot;: &quot;admin&quot;,</span>
+<span class="line">          &quot;createdAt&quot;: &quot;2024-08-18T17:04:17.757Z&quot;,</span>
+<span class="line">          &quot;lastUpdatedBy&quot;: &quot;admin&quot;,</span>
+<span class="line">          &quot;lastUpdatedAt&quot;: &quot;2024-08-20T09:45:57.596Z&quot;</span>
+<span class="line">        },</span>
+<span class="line">        &quot;state&quot;: 2,</span>
+<span class="line">        &quot;lifecycle&quot;: -1,</span>
+<span class="line">        &quot;inetOrgPerson&quot;: {</span>
+<span class="line">          &quot;cn&quot;: &quot;DUPONT Alain&quot;,</span>
+<span class="line">          &quot;displayName&quot;: &quot;Alain Dupont&quot;,</span>
+<span class="line">          &quot;facsimileTelephoneNumber&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;givenName&quot;: &quot;Alain&quot;,</span>
+<span class="line">          &quot;labeledURI&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;mail&quot;: &quot;ad@lmondomaine.com&quot;,</span>
+<span class="line">          &quot;mobile&quot;: &quot;06 07 08 09 10&quot;,</span>
+<span class="line">          &quot;postalAddress&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;preferredLanguage&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;sn&quot;: &quot;DUPONT&quot;,</span>
+<span class="line">          &quot;telephoneNumber&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;title&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;uid&quot;: &quot;aabbas&quot;,</span>
+<span class="line">          &quot;employeeNumber&quot;: &quot;111111&quot;,</span>
+<span class="line">          &quot;employeeType&quot;: &quot;TAIGA&quot;,</span>
+<span class="line">          &quot;departmentNumber&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;jpegPhoto&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;userCertificate&quot;: &quot;&quot;,</span>
+<span class="line">          &quot;userPassword&quot;: &quot;&quot;</span>
+<span class="line">        },</span>
+<span class="line">        &quot;additionalFields&quot;: {</span>
+<span class="line">          &quot;objectClasses&quot;: [</span>
+<span class="line">            &quot;supannPerson&quot;</span>
+<span class="line">          ],</span>
+<span class="line">          &quot;attributes&quot;: {</span>
+<span class="line">            &quot;supannPerson&quot;: {</span>
+<span class="line">              &quot;supanncivilite&quot;: &quot;M.&quot;,</span>
+<span class="line">              &quot;supannOIDCGenre&quot;: &quot;M.&quot;,</span>
+<span class="line">              &quot;supannPrenomsEtatCivil&quot;: &quot;Alain&quot;,</span>
+<span class="line">              &quot;supannAutreMail&quot;: &quot;ad@monmailpriver.com&quot;,</span>
+<span class="line">              &quot;supannNomdeNaissance&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannOIDCDatedeNaissance&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannCodeINSEEPaysDeNaissance&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannCodeINSEEVilleDeNaissance&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannListeRouge&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;mailForwardingAddress&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannMailPerso&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannRoleGenerique&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannEmpId&quot;: 0,</span>
+<span class="line">              &quot;supannParrainDN&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannTypeEntiteAffectation&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannActivite&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannEmpDateFin&quot;: &quot;&quot;,</span>
+<span class="line">              &quot;supannEtablissement&quot;: &quot;&quot;</span>
+<span class="line">            }</span>
+<span class="line">          }</span>
+<span class="line">        },</span>
+<span class="line">        &quot;initState&quot;: 0,</span>
+<span class="line">        &quot;fingerprint&quot;: &quot;b65c62b466b0c401398c9da3ca489a880befc38f049e6dfacb48eded011eff11&quot;</span>
+<span class="line">      }</span>
+<span class="line">    }</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Le backend traitera la demande et renverra sur sa sortie standard le resultat au format JSON avec 2 clés :</p><ul><li>code : 0 OK autre que 0 probleme</li><li>message : le message pour le journal de sesame</li></ul><p>Exemple :</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">{&quot;code&quot;: 0, &quot;message&quot;: &quot;server alive&quot;}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h2 id="structure-d-un-backend" tabindex="-1"><a class="header-anchor" href="#structure-d-un-backend"><span>Structure d&#39;un backend</span></a></h2><p>chaque backend a un espace dans <strong>/var/lib/sesame-daemon/backend</strong></p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">XXmonbackend </span>
+<span class="line">	config.yml</span>
+<span class="line">	bin</span>
+<span class="line">	   script1</span>
+<span class="line">	   script2</span>
+<span class="line">	   ...</span>
+<span class="line">	</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Ceci est la structure minimum. Le daemon excutera le script concerné en se deplaçant dans <strong>bin</strong></p><p>Vous pouvez ajouter dans cette arborescense ce que vous avez besoin (etc, lib ...)</p><h3 id="fichier-config-yml" tabindex="-1"><a class="header-anchor" href="#fichier-config-yml"><span>Fichier config.yml</span></a></h3><p>Ce fichier renseigne le daemon du script à executer selon l&#39;action demandée. Le script doit avoir le droit d&#39;execution.</p><p>Ce fichier se compose d&#39;une entete et des actions :</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">_version: 1</span>
+<span class="line"></span>
+<span class="line">name: &#39;dummy&#39;</span>
+<span class="line">description: &#39;Dummy backend for tests&#39;</span>
+<span class="line">active: true</span>
+<span class="line">actions:</span>
+<span class="line">  IDENTITY_PASSWORD_CHANGE:</span>
+<span class="line">    script: &quot;dummy.sh&quot;</span>
+<span class="line">    onError: &#39;stop&#39;</span>
+<span class="line">  IDENTITY_PASSWORD_RESET:</span>
+<span class="line">    script: &quot;dummy.sh&quot;</span>
+<span class="line">    onError: &#39;stop&#39;</span>
+<span class="line">  IDENTITY_CREATE:</span>
+<span class="line">    script: &#39;dummy.sh&#39;</span>
+<span class="line">    onError: &#39;stop&#39;</span>
+<span class="line">  IDENTITY_UPDATE:</span>
+<span class="line">    script: &#39;dummy.sh&#39;</span>
+<span class="line">    onError: &#39;stop&#39;</span>
+<span class="line">  IDENTITY_DELETE:</span>
+<span class="line">    script: &#39;dummy.sh&#39;</span>
+<span class="line">    onError: &#39;stop&#39;</span>
+<span class="line">  PING_TARGET:</span>
+<span class="line">    script: &#39;dummy.sh&#39;</span>
+<span class="line">    onError: &#39;continue&#39;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="les-actions" tabindex="-1"><a class="header-anchor" href="#les-actions"><span>Les actions :</span></a></h3><ul><li><strong>IDENTITY_PASSWORD_CHANGE</strong> : est appellé lors du changement du mot de passe.</li><li><strong>IDENTITY_PASSWORD_RESET</strong> : est appellé pour un RESET du mot de passe.</li><li><strong>IDENTITY_CREATE</strong> : Non utilisé pour l instant</li><li><strong>IDENTITY_UPDATE</strong> : Appelé lors de la creation ou modification d&#39;une identité</li><li><strong>IDENTITY_DELETE</strong> : Appelé lors de la suppression d&#39;une identité</li><li><strong>PING_TARGET</strong> : appellé pour la verification du backend</li></ul><p>Paramètres :</p><ul><li><strong>script</strong> : Nom du script (dans bin) qui doit être appellé sur l&#39;action concernée</li><li><strong>onError</strong> : continue | stop Permet d&#39;indiquer en cas d&#39;erreur si le daemon doit continuer ou abandonner</li></ul><h2 id="exemple-de-script-bash" tabindex="-1"><a class="header-anchor" href="#exemple-de-script-bash"><span>Exemple de script bash :</span></a></h2><p>Cet exemple écrit juste le contenu du json reçu sur l&#39;entrée standard dans un fichier :</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">#!/bin/sh</span>
+<span class="line">JSON=`cat -`</span>
+<span class="line">sleep 1</span>
+<span class="line">echo $JSON &gt;/tmp/dummy.json</span>
+<span class="line">echo &quot;{\&quot;status\&quot;: 0, \&quot;message\&quot;: \&quot;dummy upsertbackend backend\&quot;}&quot;</span>
+<span class="line">exit 0</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="exemple-de-backend-00dummy" tabindex="-1"><a class="header-anchor" href="#exemple-de-backend-00dummy"><span>Exemple de backend 00dummy</span></a></h2><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">00dummy</span>
+<span class="line">.</span>
+<span class="line">./bin</span>
+<span class="line">./bin/dummy.sh</span>
+<span class="line">./config.yml</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="vp-meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="vp-meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: alain.abbas@libertech.fr">Alain Abbas</span><!----><!--]--><!--]--></span></div></div></footer><nav class="vp-page-nav" aria-label="page navigation"><!----><a class="route-link auto-link next" href="/sesame-doc/backends/backend_AD.html" aria-label="Backend AD"><div class="hint">Next <span class="arrow right"></span></div><div class="link"><span>Backend AD</span></div></a></nav><!--[--><!--]--></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/sesame-doc/assets/app-BVfWGSVO.js" defer></script>
+  </body>
+</html>
