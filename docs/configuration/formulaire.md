@@ -8,13 +8,36 @@ Les fichiers de configurations pour l'interface d'administration sont dans confi
 
 LE nommage de ses fichiers est le suivant [schema].ui.yml. La presence du fichier ajoutera un onglet dans l'identité. 
 
+## Nommage
+Selon l'action sur l'identité (creation, modification) et le type de source (TAIGA,LOCAL,...) un fichier jsonform sera sélectionné 
+
+Le nom du fichier  a la forme suivante : 
+
+```
+objectclass.[employeetype].[action].ui.yml
+```
+**_Le nom du fichier doit être en minuscule_**
+
+* **objectclass** : le schema ex: (inetorgperson, supannperson ...)
+* **employeetype** : cette partie est optionnelle il doit correspondre au champs employeetype de l'identité ex: (taiga,local...)
+* **action** : l'action qui est faite sur l'identité dans l'interface UI (create,update)
+
+Pour une identité concernée la recherche se fera dans l'ordre suivant : 
+
+* objectclass.employeetype.action.ui.yml
+* objectclass.action.ui.yml
+* objectclass.ui.yml
+
+***Le premier fichier trouvé sera appliqué*** 
+
+
 ## Format
 
 Le format du fichier de formulaire respecte la norme [JSONFORMS](https://jsonforms.io/docs/uischema/)
 
 Le fichier peut être ecrit dans un format YML ou JSON.
 
-Après l installation deux fichiers sont présents inetorgperson.ui.yml et supannPerson.ui.yml
+Après l installation deux fichiers sont présents inetorgperson.ui.yml et supannperson.ui.yml
 
 Fichier inetorgperson.ui.yml
 
@@ -102,7 +125,7 @@ Un élement est composé de :
 
 ## Exemple 
 
-Pour afficher les champs que nous avons défini dans l'exemple de la configuration des champs et validation, nou créons un fichier configs/sesame-orchestrator/jsonforms/sogxuser.ui.yml
+Pour afficher les champs que nous avons défini dans l'exemple de la configuration des champs et validation, nous créons un fichier configs/sesame-orchestrator/jsonforms/sogxuser.ui.yml
 
 ```
 type: Group

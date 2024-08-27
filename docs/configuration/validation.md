@@ -13,6 +13,11 @@ Le système de validation d'identité utilise des fichiers de configuration YAML
 ## Validation des champs InetOrgPerson
 
 Les champs de base de l'objet `inetOrgPerson` sont validés par défaut. 
+### Les champs servant de clé 
+- `employeeNumber`
+- `employeeType`
+
+
 
 ### Champs obligatoires :
 - `cn`  
@@ -34,6 +39,7 @@ Les champs de base de l'objet `inetOrgPerson` sont validés par défaut.
 - `title`
 - `userCertificate`
 - `userPassword`
+-  `departmentNumber`
 
 ## Validation des champs des schema additionnels
 

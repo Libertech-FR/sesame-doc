@@ -61,13 +61,15 @@ Le script va génerer l'architecture dans backends et creer le fichier de config
 ### config.conf :
 
 ```
+#paramètres positionnés par l'installation
 host=myldap.mydomain.com
 dn=cn=manager,cn=internal,dc=mydomain,dc=com
 password=MyPassword
 base=dc=mydomain,dc=com
 userbase=ou=peoples,dc=mydomain,dc=com
 rdnattribute=uid
-### Parametres facultatifs 
+# Parametres facultatifs 
+excludedObjectclasses=objeclass1,objectclass2
 branchForEtd=ou=Etudiants
 branchForAdm=ou=Administratifs
 branchForEsn=ou=Enseignants
@@ -88,6 +90,7 @@ backendFor=adm,etd,esn
 * branchForEsn : idem pour les enseignants
 * branchAttr : l'attribut qui sert à determiner dans quelle branche l'identité est crée.
 * backendFor : liste des types d'identités gérée par le backend ex : adm,esn,etd
+* excludedObjectclasses : listes de objectclasses qui ne seront pas écrits dans le serveur LDAP
 
 
 
