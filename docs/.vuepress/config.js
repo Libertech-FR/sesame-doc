@@ -52,6 +52,7 @@ theme: defaultTheme({
           prefix: '/backends',
           children: [
              'backends',
+             'librairie_python',
              'backend_AD',
              'backend_LDAP'
           ]

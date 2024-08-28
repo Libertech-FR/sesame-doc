@@ -100,12 +100,12 @@ Exemple :
 ```
 Le backend traitera la demande et renverra sur sa sortie standard le resultat au format JSON avec 2 clés : 
 
-* code : 0 OK autre que 0 probleme
+* status : 0 OK autre que 0 probleme
 * message : le message pour le journal de sesame
 
 Exemple : 
 ```
-{"code": 0, "message": "server alive"}
+{"status": 0, "message": "server alive"}
 ```
 
 ## Structure d'un backend
@@ -193,5 +193,11 @@ exit 0
 ./config.yml
 ```
 
-
-
+# Debuggage d'un backend 
+ Il est conseillé de mettre me un backend dummy (voir l exemple) pour avoir l'entrée json. Dans l exemple il creera un fichier /tmp/dummy.json pour l'insertion et la modification
+ 
+ ```
+ cd /var/lib/sesame-daemon/backends/01xx/bin
+ cat /tmp/dummy.json|./upsertidentity.py
+ ```
+ 

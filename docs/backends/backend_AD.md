@@ -1,6 +1,107 @@
 # Backend AD 
 Ce backup sert à synchroniser les identitées avec Active Directory sur windows server >= 2019
 
+## Modifications necessaires sur windows serveur (>=Windows 2019)
+
+### Activer ssh : 
+
+* verification de la fonctionnalité
+
+```
+PS >Get-WindowsCapability -Online -Name Open* 
+
+
+Name         : OpenSSH.Client~~~~0.0.1.0
+State        : Installed
+DisplayName  : Client OpenSSH
+Description  : Client SSH (Secure Shell) basé sur OpenSSH, pour la gestion de clés sécurisée et l’accès aux
+               ordinateurs distants.
+DownloadSize : 1323493
+InstallSize  : 5301402
+
+Name         : OpenSSH.Server~~~~0.0.1.0
+State        : NotPresent
+DisplayName  : Serveur OpenSSH
+Description  : Serveur SSH (Secure Shell) basé sur OpenSSH, pour la gestion de clés sécurisée et l’accès à partir
+               d'ordinateurs distants.
+DownloadSize : 1297677
+InstallSize  : 4946932
+```
+* Activation : 
+
+```
+PS> Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+
+Path          :
+Online        : True
+RestartNeeded : False
+```
+
+* verification : 
+
+```
+PS> Get-Service sshd
+
+Status   Name               DisplayName
+------   ----               -----------
+Stopped  sshd               OpenSSH SSH Server
+
+PS>  Get-Service ssh-agent
+
+Status   Name               DisplayName
+------   ----               -----------
+Stopped  ssh-agent          OpenSSH Authentication Agent
+
+```
+
+* demarrage des services 
+
+```
+PS > Start-Service sshd
+PS>  Start-Service ssh-agent
+```
+
+* vérification des services
+
+```
+Get-Service sshd
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  sshd               OpenSSH SSH Server
+
+
+PS C:\Users\Administrateur> Get-Service ssh-agent
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  ssh-agent          OpenSSH Authentication Agent
+```
+
+* activation au démarrage 
+
+```
+PS >Set-Service -Name ssh-agent -StartupType Automatic
+PS >Set-Service -Name sshd -StartupType Automatic
+```
+
+### Changement de l'encodage par defaut en UTF-8 
+
+Si vous voulez les accents dans les noms des utilisateurs vous devez changer l'encodage par défaut 
+
+```
+Panneau de configuration 
+   > Horloge et région
+      > Région
+         > Administration
+            > Modifier les paramètres régionaux 
+               Cochez :  Beta: Utilisez le format Unicode UTF-8 pour une prise en charge ....
+```
+
+
+
+
 ## Installation 
 
 Pour l'instant juste le paquet debian est disponible
@@ -166,3 +267,13 @@ Le powershell doit donner un code de retour (exit)
 * 1 Erreur 
 
 L'erreur  ou le message doit être écrite sur la sortie standard (Write-Host)
+
+# deboggage
+
+vous pouvez voir le script généré sur le window en passant --debug=1 au script de backend : 
+
+```
+cat /tmp/dummy.json|./upsertidentity --debug=1
+```
+le script généré dans windows se trouvera dans le répertoire utilisateur
+
