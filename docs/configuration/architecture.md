@@ -16,7 +16,9 @@ configs/
 ├── sesame-app-manager/
 │   ├── statics/
 │   │   ├── logo.png
-│   └── ...
+│   └── config/
+│       ├── identities.columns.yml
+│       ├── menus.yml
 ├── sesame-orchestrator/
 │   ├── jsonforms/
 │   │   ├── nom_object_class.ui.yml
@@ -35,12 +37,13 @@ import
 ### .env
 
 ```
-#Clé pour la génération du jeton JWWT
+#Clé pour la génération du jeton JWT
 JWT_SECRET='w1CMHnr{n!4ccEkaS1%4a8,[y)rFO{z4'
 # Url du serveur
-HOST=http://10.22.32.67
+HOST=http://192.168.1.1
 # Type de connexion (true ou false)
 TLS=false
+SESAME_FRONT_MDP="https://monfrontal-de-mot-de-passe.fr"
 ```
 ### docker-compose.yml
  Fichier de configuration Docker Compose pour lancer les services.
@@ -51,7 +54,61 @@ Fichier de configuration Make pour lancer les commandes de gestion des services 
 ### configs
 Dossier de configuration pour chaque service
 ####sesame-app-manager
-`statics/` : Dossier contenant les fichiers statiques (images, etc.).
+- `statics/` : Dossier contenant les fichiers statiques (images, etc.).
+- `config/identities.columns.yml` : Fichier de configguration des colonnes dans le panneau identités
+
+```
+entries:
+  - name: inetOrgPerson.uid
+    label: ID
+    field:
+      type: function
+      value: row?.inetOrgPerson?.uid
+    align: left
+    sortable: true
+
+  - name: inetOrgPerson.employeeNumber
+    label: EmployeeNumber
+    field:
+      type: function
+      value: row?.inetOrgPerson?.employeeNumber
+    align: left
+    sortable: true
+
+  - name: additionalFields.attributes.supannPerson.supannTypeEntiteAffectation
+    label: Affectation
+    field:
+      type: function
+      value: row.additionalFields?.attributes?.supannPerson?.supannTypeEntiteAffectation
+    format:
+      type: function
+      value: "Array.isArray(value) ? value?.join(', ') : value"
+    align: left
+    sortable: true
+
+
+  - name: inetOrgPerson.sn
+    label: Nom
+    field:
+      type: function
+      value: row?.inetOrgPerson?.sn
+    align: left
+    sortable: true
+
+  - name: inetOrgPerson.givenName
+    label: Prénom
+    field:
+      type: function
+      value: row?.inetOrgPerson?.givenName
+    align: left
+    sortable: false
+
+```
+
+- `config/menus.yml` : permet d'ajouter des briques dans la page d'accueil (beta)
+
+```
+
 
 ### sesame-orchestrator 
 Configuration des données (API).

@@ -94,3 +94,6 @@ Se referer au site de site de quasar.dev pour les explications : [Quasar Theme B
 ## Configuration de la politique de mot de passe 
 
 Voir le chapitre [Confifuration de la politique de mot de passe](/sesame-doc/configuration/config-gestion-mdp.html)
+
+## Modèles des mails 
+voir la section configuration [/sesame-doc/configuration/config-gestion-mdp.html](/sesame-doc/configuration/config-gestion-mdp.html)
