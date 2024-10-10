@@ -42,6 +42,8 @@ COLOR_INFO='#31CCEC',
 COLOR_WARNING='#F2C037'
 ```
 Exemple du fichier docker-config.yml 
+
+Dans cet exemple le port d'écoute du serveur est 3002
 ```yaml
 services:
   sesame-gestion-mdp:
@@ -75,6 +77,8 @@ config/img/logo.png  <--- Le logo se trouvant sur la page
 config/img/background.png <--- Le fond d'ecran
 ```
 Ces images (logo et background) doivent être au format PNG
+
+**ATTENTION** pensez à vider votre cache quand vous changez les images
 
 ### couleurs
 Des variables d'environnement à mettre dans .env permettent de changer les couleurs de bases

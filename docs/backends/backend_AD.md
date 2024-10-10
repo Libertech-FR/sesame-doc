@@ -120,12 +120,12 @@ apt-get install -f
 
 ## Activation et paramètrage
 
-allez dans le répertoire /var/lib/backend-modules/ad
+allez dans le répertoire /var/lib/sesame-daemon/backend-modules/ad
 
 et lancez le script d'activation (install.sh
 
 ```
-cd  /var/lib/backend-modules/ad
+cd  /var/lib/sesame-daemon/backend-modules/ad
 ./install.sh
 ```
 Le script va vous demander un certains nombre de renseignement pour pouvoir configurer le backend
