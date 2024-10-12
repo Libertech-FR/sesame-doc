@@ -206,19 +206,20 @@ Si notre fichier de données et le suivant :
 
 #### Les différentes transformations disponibles 
 
-| Nom de l'action| Description |
-| --- | --- |
-| `capitalize` | Convertit la première lettre en majuscule et le reste en minuscule |
-| `lower` | Convertit tous les caractères en minuscule |
-| `upper` | Convertit tous les caractères en majuscule |
-| `title` | Convertit tous le premier caractère en Majuscule de chaque mot et le reste en minuscule |
-| `remove_accents` | Enlève les accents de la chaine de caractères |
-| `join(delimiter=' ')` | contactaine les élements avec le séparateur indiqué |
-| `prefix(string='prefix-')` | Ajoute la chaine definie au debut de la chaine |
-| `suffix(string='-suffix')` | Ajoute la chaine definie à la fin de la chaine |
-| `split(delimiter=' ')` | Eclate la chaine de caractère en un tableau |
-| `replace(old, new)` | Replace une valeur dans la chaine par une autre |
-| `regex(pattern, replace)` | Applique une expression réguliere et remplace les élements trouvés |
+| Nom de l'action            | Description                                                                                                                                                                                                                                              |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `capitalize`               | Convertit la première lettre en majuscule et le reste en minuscule                                                                                                                                                                                       |
+| `lower`                    | Convertit tous les caractères en minuscule                                                                                                                                                                                                               |
+| `upper`                    | Convertit tous les caractères en majuscule                                                                                                                                                                                                               |
+| `title`                    | Convertit tous le premier caractère en Majuscule de chaque mot et le reste en minuscule                                                                                                                                                                  |
+| `remove_accents`           | Enlève les accents de la chaine de caractères                                                                                                                                                                                                            |
+| `join(delimiter=' ')`      | contactaine les élements avec le séparateur indiqué                                                                                                                                                                                                      |
+| `prefix(string='prefix-')` | Ajoute la chaine definie au debut de la chaine                                                                                                                                                                                                           |
+| `suffix(string='-suffix')` | Ajoute la chaine definie à la fin de la chaine                                                                                                                                                                                                           |
+| `split(delimiter=' ')`     | Eclate la chaine de caractère en un tableau                                                                                                                                                                                                              |
+| `replace(old, new)`        | Replace une valeur dans la chaine par une autre                                                                                                                                                                                                          |
+| `regex(pattern, replace)`  | Applique une expression réguliere et remplace les élements trouvés                                                                                                                                                                                       |
+| `substr(start=0 ,end=-1)`  | prend la sous-chaine commençant à start et finissant à end (start ou end peuvent être omis ex: - substr(end=10) prendra du caractere 0 à 10. **ATTENTION** :  si vous mettez les deux parametres un espace entre le chiffre et la virgule est necessaire |
 
 
 Exemple de regex utile : 
