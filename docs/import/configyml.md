@@ -92,7 +92,7 @@ Ce paragraphe, dans le fichier config.yml sert à definir qui va où.
 Il associe les champs standards de sesame et les champs additionnels avec la valeur du fichier de data
 
 #### champs standards
-Les champs standards (voir documentation [/configuration/validation](/configuration/validation). Ces champs sont préfixés avec le inetOrgPerson ex :interOrgPerson.title. Sa valeur est le nom de la clé dans le fichier data
+Les champs standards (voir documentation [/sesame-doc/configuration/validation.html](/configuration/validation). Ces champs sont préfixés avec le inetOrgPerson ex :interOrgPerson.title. Sa valeur est le nom de la clé dans le fichier data
 
 ```
 inetOrgPerson.title: "title"

@@ -99,7 +99,8 @@ Panneau de configuration
                Cochez :  Beta: Utilisez le format Unicode UTF-8 pour une prise en charge ....
 ```
 
-
+Poue plus d'information consultez la base de connaissance Microsoft :
+[https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement]
 
 
 ## Installation 

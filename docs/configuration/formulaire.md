@@ -113,6 +113,12 @@ elements:
   - type: Control
     label: Titre
     scope: "#/properties/title"
+  - type: Control
+    label: Photo
+    scope: "#/properties/jpegPhoto"
+    options:
+       format: file
+       storage: picture
 ```
 
 Un élement est composé de : 

@@ -10,6 +10,7 @@ description: Configuration des données
 
 Le système de validation d'identité utilise des fichiers de configuration YAML pour définir des règles de validation pour différents types d'objets d'identité. Chaque fichier YAML correspond à une `objectClass` spécifique et définit les attributs requis et leurs types pour cette classe.
 
+Les fichiers de validation sont situés : **./configs/sesame-orchestrator/validations**
 ## Validation des champs InetOrgPerson
 
 Les champs de base de l'objet `inetOrgPerson` sont validés par défaut. 
@@ -261,7 +262,7 @@ Nous allons ajouter 3 champs :
 * sogxquota : pour gérer les quotas dans le système de messagerie
 * sogxdisableflag : pour désactiver le compte sur le système de messagerie 
 
-dans **configs/sesame-orchestrator/validation nous creons un fichier sogxuser.yml
+dans **configs/sesame-orchestrator/validations** nous creons un fichier sogxuser.yml
 
 ```
 $schema: "http://json-schema.org/draft-07/schema#"
