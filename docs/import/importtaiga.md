@@ -21,15 +21,30 @@ exclude:
 mapping:
   ...
 ```
-
+Dans cet exemple les noms commençant par # seront exclus de l import
 ## Option pour l'import des photos 
 Le champs contenant le nom du fichier jpeg doit être mappé :
-
 Dans la section mapping :
 ```
 customFields.photo: "photo_nom"
 ```
-Dans cet exemple les noms commençant par # seront exclus de l import
+## Champs de type obligatoire version orchestator > 1.1.6
+
+* le champs employeeNumber doit etre un tableau et etre remplit que à l insertion 
+* le champs departmentNumber doit etre un tableau et etre remplit que à l insertion
+```
+import_etd.json:
+mapping:
+   $setOnInsert.inetOrgPerson.departmentEmployee:
+   - "id_coord"
+```
+
+```
+ additionalFields:
+    $setOnInsert.inetOrgPerson.departmentNumber:
+    - "adm"
+```
+
 
 ## Lancement de l'import 
 
