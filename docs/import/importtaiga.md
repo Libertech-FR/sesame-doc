@@ -35,7 +35,7 @@ customFields.photo: "photo_nom"
 ```
 import_etd.json:
 mapping:
-   $setOnInsert.inetOrgPerson.departmentEmployee:
+   $setOnInsert.inetOrgPerson.employeeNumber:
    - "id_coord"
 ```
 
