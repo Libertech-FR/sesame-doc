@@ -75,6 +75,10 @@ branchForAdm=ou=Administratifs
 branchForEsn=ou=Enseignants
 branchAttr=supannTypeEntiteAffectation
 backendFor=adm,etd,esn
+disabledAttribute=sogxdisableflag
+disableValue=1
+enableValue=0
+additionnalObjectClass=sogxUser
 ```
 ### Les paramètres positionnés par le script install.sh
 * host : addresse de votre serveur ldap sous la forme simple ou en URL (ldap://monserveur:389 ou ldaps://monserveur:636)
@@ -91,7 +95,10 @@ backendFor=adm,etd,esn
 * branchAttr : l'attribut qui sert à determiner dans quelle branche l'identité est crée.
 * backendFor : liste des types d'identités gérée par le backend ex : adm,esn,etd
 * excludedObjectclasses : listes de objectclasses qui ne seront pas écrits dans le serveur LDAP
-
+* disabledAttribute : Attribut utilisé pour desactiver le compte 
+* disableValue : La valeur de **disabledAttribute** pour desactiver le compte 
+* enableValue : la valeur de **disabledAttribute** quand le compte est actif
+* additionnalObjectClass : l'objectclass pour **disabledAttribute**
 
 
 
