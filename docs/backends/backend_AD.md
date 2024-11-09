@@ -172,6 +172,7 @@ branchForAdm=ou=Administratifs
 branchForEsn=ou=Enseignants
 branchAttr=supannTypeEntiteAffectation
 backendFor=adm,etd,esn
+debug=0
 ```
 #### Paramètres renseignés par install.sh
 * **host** = adresse du serveur AD primaire 
@@ -185,7 +186,12 @@ backendFor=adm,etd,esn
 * **branchForEsn** = branche relative pour la population esn
 * **branchAttr** = Attribut qui sert à determiner le type de population
 * **backendFor** = Le backend fera l'action pour les populations listées
+* **debug** = 0|1 si 1 le backend generera le script, lo copiera sur le host mais ne l executera pas
 
+#### Paramètres personalisés
+* **monparametre** = mavaleur
+
+Ces paramètres seront accessibles dans les templates sous la forme ** {{ config.monparametre }} **
 ### Les templates powershell 
 
 Le principe de fonctionnenemt est le suivant : 
@@ -205,6 +211,7 @@ Les variables disponibles pour le template sont :
 * **base** Base LDAP du domaine present dans le fichier de configuration
 * **dn** Le DN calculé de l'identité
 * **path** le DN superieur de l'identité
+* **config** les variables du fichier de configuration (etc/config.conf)
 
 
 Exemple de template (upsertidentity.template)

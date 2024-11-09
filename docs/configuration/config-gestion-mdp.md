@@ -134,6 +134,6 @@ networks:
     external: true      
 ```
 
-L'url à mettre dans l'interface de sesame dans serveur SMTP est : http://maildev.local:1025
+L'url à mettre dans l'interface de sesame dans serveur SMTP est : smtp://maildev.local:1025
 
 Vous pourrez consulter les mails envoyés en vous connectant sur votre serveur *http://monserveur:1080*

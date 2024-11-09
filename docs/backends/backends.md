@@ -163,6 +163,8 @@ actions:
 * **IDENTITY_CREATE** : Non utilisé pour l instant 
 * **IDENTITY_UPDATE** : Appelé lors de la creation ou modification d'une identité
 * **IDENTITY_DELETE** : Appelé lors de la suppression d'une identité
+* **IDENTITY_ENABLE** : Appelé lors de l'activation d'une identité
+* **IDENTITY_DISABLE** : Appelé lors de desactivation d'une identité
 * **PING_TARGET** : appellé pour la verification du backend 
 
 Paramètres :
