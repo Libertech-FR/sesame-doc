@@ -189,9 +189,13 @@ debug=0
 * **debug** = 0|1 si 1 le backend generera le script, lo copiera sur le host mais ne l executera pas
 
 #### Paramètres personalisés
-* **monparametre** = mavaleur
 
-Ces paramètres seront accessibles dans les templates sous la forme ** {{ config.monparametre }} **
+**monparametre** = mavaleur
+
+Ces paramètres seront accessibles dans les templates sous la forme 
+```
+{{ config.monparametre }} 
+```
 ### Les templates powershell 
 
 Le principe de fonctionnenemt est le suivant : 
@@ -278,10 +282,8 @@ L'erreur  ou le message doit être écrite sur la sortie standard (Write-Host)
 
 # deboggage
 
-vous pouvez voir le script généré sur le window en passant --debug=1 au script de backend : 
+la variable **debug**  du fichier de configuration, si elle est positionnée à 1, permet de générer le script, de le copier sur le serveur, mais il ne sera pas executé
 
-```
-cat /tmp/dummy.json|./upsertidentity --debug=1
-```
-le script généré dans windows se trouvera dans le répertoire utilisateur
+
+
 
