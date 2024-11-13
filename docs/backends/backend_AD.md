@@ -180,6 +180,7 @@ debug=0
 * **base** = Base LDAP du domaine (DistinguishedName)
 * **domain** = domaine sous la forme doamin.xx
 
+
 #### Paramètres facultatifs 
 * **branchForEtd** = branche relative pour la population etd 
 * **branchForAdm** = branche relative pour la population adm
@@ -187,6 +188,25 @@ debug=0
 * **branchAttr** = Attribut qui sert à determiner le type de population
 * **backendFor** = Le backend fera l'action pour les populations listées
 * **debug** = 0|1 si 1 le backend generera le script, lo copiera sur le host mais ne l executera pas
+
+A noter : vous pouvez ajouter une variable **branchFor** + "type de population "
+
+exemple branchForChercheurs= ... 
+
+#### Composition du DN 
+Vous pouvez composer le DN avec un template dans la variable **dnTemplate**
+
+```
+dnTemplate=cn={{ e.cn }},{{branch}},{{config.base}}
+```
+vous disposez comme dans les templates des variable 
+* **e** contient les champs de l'identité
+* **config** contient la configuration 
+* **branch** contient la branche contenue dans la variable backendForXXX
+* **rdnValue** contient la valeur du rdn
+
+Le dn généré se retrouvera disponible dans la variable **dn** pour le template 
+
 
 #### Paramètres personalisés
 
