@@ -202,7 +202,7 @@ dnTemplate=cn={{ e.cn }},{{branch}},{{config.base}}
 vous disposez comme dans les templates des variable 
 * **e** contient les champs de l'identité
 * **config** contient la configuration 
-* **branch** contient la branche contenue dans la variable backendForXXX
+* **branch** contient la branche contenue dans la variable branchForXXX
 * **rdnValue** contient la valeur du rdn
 
 Le dn généré se retrouvera disponible dans la variable **dn** pour le template 
