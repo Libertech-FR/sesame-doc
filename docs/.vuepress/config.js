@@ -25,7 +25,8 @@ theme: defaultTheme({
              'installation-server',  
              'installation-daemon',
              'installation-taiga',
-              'gestion-mdp'
+              'gestion-mdp',
+              'architecture-de-securite'
           ],
         },{
           text: 'Configuration',

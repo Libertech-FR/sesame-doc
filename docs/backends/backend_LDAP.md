@@ -101,4 +101,16 @@ additionnalObjectClass=sogxUser
 * additionnalObjectClass : l'objectclass pour **disabledAttribute**
 
 
+#### Composition du DN
+Vous pouvez composer le DN avec un template dans la variable **dnTemplate**
+
+```
+dnTemplate=cn={{ e.cn }},{{branch}},{{config.base}}
+```
+vous disposez comme dans les templates des variable
+* **e** contient les champs de l'identité
+* **config** contient la configuration
+* **branch** contient la branche contenue dans la variable branchForXXX
+* **rdnValue** contient la valeur du rdn
+
 

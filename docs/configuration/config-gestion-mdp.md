@@ -83,7 +83,7 @@ Les élements variables liés à l'identité sont entre double crochet '\{ \{ va
     * \{ \{ uid \} \} L'uid de l'identité
     * \{ \{ url \} \} L'url pour l'activation du compte
 * Pour la reinitialisation du compte les variables sont : 
-    * \{ \{ displayname \} \}
+    * \{ \{ displayName \} \}
     * \{ \{ uid \} \}
     * \{ \{ code \} \}
 
