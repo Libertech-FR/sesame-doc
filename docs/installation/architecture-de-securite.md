@@ -10,10 +10,15 @@ L'orchestrator la base mongo, le daemon ne doivent pas être exposés directemen
 * Le flux entre l'administrateur et le frontal de gestion est qu'en interne 
 
 # Sécurisation des flux
-Pour sécuriser le flux internet il faut installer un reverse proxy sur le serveur 
+Pour sécuriser le flux internet il faut soit installer un reverse proxy sur le serveur , ou paramétrer les services en HTTPS. 
+L'installation via reverse proxy est interessante si vous avez plusieurs services sur le host ou si vous voulez ajouter des headers 
+de securité ou des restrictions d'url 
 
-## Serveur gestion-mdp
-### Installation
+La configuration des services en https est plus simple mais moins souple.
+
+
+## Serveur gestion-mdp 
+### Installation (Methode par Reverse-Proxy)
 Un script est disponible pour l installation du reverse sur la machine docker hébergant la gestion des mdp
 * créez un répertoire ex: "/data/revproxy" et allez dans ce répertoire
 * télécharger le script
@@ -36,7 +41,38 @@ Vous pouvez mettre des certificats officiels
 * La clé privée : certs/key.pem
 * le certificat : certs/cert.pem
 
-## Serveur orchestrator
+## Parametrage du service en HTTPS (Methode alrernative)
+## Serveur gestion-mdp
+* Modifier docker-compose.yml
+```yaml
+services:
+  sesame-gestion-mdp:
+    container_name: sesame-gestion-mdp
+    image: ghcr.io/libertech-fr/sesame-gestion-mdp:latest
+    restart: always
+    env_file: .env
+    ports: 
+      - 443:3000
+    volumes:
+      - "./config:/data/src/public"
+      - "./certificates:/data/certificates"
+```
+* Ajouter : - ./certificates:/data/certs"
+* Changez le port d'écoute "443:3000"
+* Ajouter les variables dans .env
+```
+SESAME_HTTPS_PATH_KEY=./certificates/server.key
+SESAME_HTTPS_PATH_CERT=./certificates/server.crt
+SESAME_HTTPS_ENABLED=true
+TLS=true
+```
+### mettez des certificats
+Mettez vos certificats dans ./certificates
+* La clé privée : ./certificates/server.key
+* le certificat : ./certificates/server.crt
+
+## Serveur orchestrator (Méthode par reverse proxy)
+
 Un script est disponible pour l installation du reverse sur la machine docker hébergant l'orchestrator et le frontal de d'administration
 * créez un répertoire ex: "/data/revproxy" et allez dans ce répertoire
 * télécharger le script
@@ -59,3 +95,70 @@ Vous pouvez mettre des certificats officiels
 * La clé privée : certs/key.pem
 * le certificat : certs/cert.pem
 
+## Parametrage des service en HTTPS
+Les deux services doivent etre parametrés en HTTPS 
+* Modifiez docker-compose.yml
+```yaml
+services:
+  sesame-app-manager:
+    container_name: sesame-app-manager
+    image: ghcr.io/libertech-fr/sesame-app-manager:latest
+    restart: always
+    env_file: .env
+    depends_on:
+      - sesame-orchestrator
+    environment:
+      - SESAME_APP_API_URL=${HOST}:4000
+    volumes:
+      - ./configs/sesame-app-manager/statics:/data/src/public/config
+      - ./configs/sesame-app-manager/config:/data/config
+      - "./certificates:/data/certificates"
+    ports:
+      - "443:443"
+    networks:
+      - sesame
+      - reverse
+      
+  sesame-orchestrator:
+    container_name: sesame-orchestrator
+    image: ghcr.io/libertech-fr/sesame-orchestrator:latest
+    env_file: .env
+    restart: always
+    depends_on:
+      - sesame-mongo
+      - sesame-redis
+    environment:
+      - SESAME_REDIS_URI=redis://sesame-redis:6379
+      - SESAME_MONGO_URI=mongodb://sesame-mongo:27017/sesame
+      - SESAME_JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./configs/sesame-orchestrator/jsonforms:/data/configs/identities/jsonforms
+      - ./configs/sesame-orchestrator/validations:/data/configs/identities/validations
+      - ./configs/sesame-orchestrator/storage:/data/storage
+      - ./configs/sesame-orchestrator/mail-templates:/data/templates
+      - "./certificates:/data/certificates"
+    ports:
+      - "4443:443"
+    networks:
+      - sesame
+      - reverse
+
+
+```
+* Ajout des variables dans .env
+```
+SESAME_HTTPS_PATH_KEY=./certificates/server.key
+SESAME_HTTPS_PATH_CERT=./certificates/server.crt
+SESAME_HTTPS_ENABLED=true
+```
+### mettez des certificats
+Mettez vos certificats dans ./certificates
+* La clé privée : ./certificates/server.key
+* le certificat : ./certificates/server.crt
+
+
+N'oubliez pas de changer la variable de l'api dans gestion-mdp pour refleter le protocole et le port de l'orchestrator
+```
+API_URL=https://monserveruSesame:4443
+```
+Dans ce cas ci 
