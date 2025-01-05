@@ -11,12 +11,6 @@ description: Installation de sesame
 * curl installé
 
 ## Installation des prérequis
-### Installation de make et curl
-```
-apt-get update 
-apt-get install make
-apt-get install curl
-```
 
 ### Installation de docker
 
@@ -61,7 +55,11 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ## Installation de sesame
 
-
+Installation de make et curl et jq
+```
+apt-get update 
+apt-get install make curl jq
+```
 
 creer un repertoire pour accueillir l'installation ( dans notre guide /data/sesame)
 
@@ -80,12 +78,10 @@ Commande docker OK
 command make OK
 command curl OK
 Répertoire d'installation (/data/sesame) :
-Url du serveur (http(s)://(nom|ip):http://192.168.0.1
+"Url du portail de gestion de mot de passe (http(s)://(nom|ip):
 ```
 * Repertoire : Repertoire de l installation (par defaut où vous avez lancé le script)
-* Url du serveur : L'url à appeler (adresse de la machine ou nom avec le protocole
-* Nom de domaine des emails : le nom de domaine pour la generation des emails dans l'import Taiga
-* Numero d'etablissement : cette valeur sera mise dans l'attribut  **supannEtablissement**
+* Url du portail de gestion de mot de passe : L'url du portail pour le changement de mot de passe
 
 Après avoir télechargé les images le script vous demande :
 
@@ -105,8 +101,8 @@ le couple username et password seront le login de l'administrateur sur l'interfa
 ```
 ------------------------------
 L'installation est terminée
-Vous pouvez vous connecter à l interface via http://10.22.32.66:3000
-Pour lancer l'importation taiga dans le repertoire /data/sesame lancez la commande make sesame-import-taiga
+Vous pouvez vous connecter à l interface via http://votreserveur:3000
+
 ```
 
 *Sesame est installé*

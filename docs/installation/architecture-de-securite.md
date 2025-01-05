@@ -64,7 +64,6 @@ services:
 SESAME_HTTPS_PATH_KEY=./certificates/server.key
 SESAME_HTTPS_PATH_CERT=./certificates/server.crt
 SESAME_HTTPS_ENABLED=true
-TLS=true
 ```
 ### mettez des certificats
 Mettez vos certificats dans ./certificates
@@ -99,30 +98,33 @@ Vous pouvez mettre des certificats officiels
 Les deux services doivent etre parametrés en HTTPS 
 * Modifiez docker-compose.yml
 ```yaml
+name: "sesame"
+
 services:
   sesame-app-manager:
     container_name: sesame-app-manager
     image: ghcr.io/libertech-fr/sesame-app-manager:latest
     restart: always
-    env_file: .env
     depends_on:
       - sesame-orchestrator
     environment:
       - SESAME_APP_API_URL=${HOST}:4000
+      - SESAME_HTTPS_PATH_KEY=/data/certificates/server.key
+      - SESAME_HTTPS_PATH_CERT=/data/certificates/server.crt
+      - SESAME_HTTPS_ENABLED=${SESAME_HTTPS_ENABLED:-false}
     volumes:
       - ./configs/sesame-app-manager/statics:/data/src/public/config
       - ./configs/sesame-app-manager/config:/data/config
-      - "./certificates:/data/certificates"
+      - ./certificates:/data/certificates
     ports:
-      - "443:443"
+      - "443:3000"
     networks:
       - sesame
       - reverse
-      
+
   sesame-orchestrator:
     container_name: sesame-orchestrator
     image: ghcr.io/libertech-fr/sesame-orchestrator:latest
-    env_file: .env
     restart: always
     depends_on:
       - sesame-mongo
@@ -131,24 +133,72 @@ services:
       - SESAME_REDIS_URI=redis://sesame-redis:6379
       - SESAME_MONGO_URI=mongodb://sesame-mongo:27017/sesame
       - SESAME_JWT_SECRET=${JWT_SECRET}
+      - SESAME_FRONT_MDP=${SESAME_FRONT_MDP}
+      - SESAME_HTTPS_PATH_KEY=/data/certificates/server.key
+      - SESAME_HTTPS_PATH_CERT=/data/certificates/server.crt
+      - SESAME_HTTPS_ENABLED=${SESAME_HTTPS_ENABLED:-false}
+
     volumes:
       - ./configs/sesame-orchestrator/jsonforms:/data/configs/identities/jsonforms
       - ./configs/sesame-orchestrator/validations:/data/configs/identities/validations
       - ./configs/sesame-orchestrator/storage:/data/storage
       - ./configs/sesame-orchestrator/mail-templates:/data/templates
-      - "./certificates:/data/certificates"
+      - ./certificates:/data/certificates
     ports:
-      - "4443:443"
+      - "4000:4000"
+      - "4443:4443"
     networks:
       - sesame
       - reverse
 
+  sesame-mongo:
+    image: mongo:7.0
+    container_name: sesame-mongo
+    command: --wiredTigerCacheSizeGB 1.5
+    restart: always
+    networks:
+      - sesame
+    volumes:
+      - ./db:/data/db
+
+  sesame-redis:
+    image: redis
+    container_name: sesame-redis
+    volumes:
+      - sesame-redis:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    restart: always
+    networks:
+      - sesame
+    command: redis-server --appendonly yes
+
+volumes:
+  sesame-redis:
+
+networks:
+  sesame:
+    external: true
+  reverse:
+    external: true
 
 ```
-* Ajout des variables dans .env
+* Ajouter dans environnement des service app-manager et orchestrator les lignes SESAME_HTTPS_*
 ```
-SESAME_HTTPS_PATH_KEY=./certificates/server.key
-SESAME_HTTPS_PATH_CERT=./certificates/server.crt
+      - SESAME_HTTPS_PATH_KEY=./certificates/server.key
+      - SESAME_HTTPS_PATH_CERT=./certificates/server.crt
+      - SESAME_HTTPS_ENABLED=${SESAME_HTTPS_ENABLED}
+```
+* Ajouter la redirection de port dans ports
+```
+   - "4443:4443"
+```
+* Ajoutez dans volumes le montage pour les certificats 
+```
+    - ./certificates:/data/certificates
+```
+* Ajout de la variable **SESAME_HTTPS_ENABLED** dans .env
+```
 SESAME_HTTPS_ENABLED=true
 ```
 ### mettez des certificats
@@ -161,4 +211,5 @@ N'oubliez pas de changer la variable de l'api dans gestion-mdp pour refleter le 
 ```
 API_URL=https://monserveruSesame:4443
 ```
-Dans ce cas ci 
+
+Vous pouvez accéder après redémarrage des containers à l'api en https sur le port 4443 : https://monsesame:4443/swagger
