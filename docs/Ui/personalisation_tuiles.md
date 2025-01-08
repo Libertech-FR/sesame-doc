@@ -39,6 +39,7 @@ entries:
 ### Exemple 
 Nous voulons une tuile qui affiche les identités désactivées dans la section Listes
 
+La page à appeler est /identities. Les paramêtres et le fitre sont ont les mêmes syntaxes que l'api (voir le chapitre [Les filtres de recherches pour l'API](/sesame-doc/Api/filtres.html)
 Dans le fichier menu.yml on ajoute une entrée:
 ```yaml
   - icon: mdi-account-cancel
