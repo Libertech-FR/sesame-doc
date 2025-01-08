@@ -1,4 +1,4 @@
-import{_ as n,c as s,o as e,a}from"./app-BT-ip7-8.js";const i={},l=a(`<h1 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture"><span>Architecture</span></a></h1><p>Si vous avez installé Sesame avec le script d&#39;installation, vous avez cette structure dans le répertoire d&#39;installation</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">.env</span>
+import{_ as n,c as s,o as e,a}from"./app-Bo6nEHcN.js";const i={},l=a(`<h1 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture"><span>Architecture</span></a></h1><p>Si vous avez installé Sesame avec le script d&#39;installation, vous avez cette structure dans le répertoire d&#39;installation</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">.env</span>
 <span class="line">docker-compose.yml</span>
 <span class="line">Makefile</span>
 <span class="line">configs/</span>
