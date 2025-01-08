@@ -57,7 +57,22 @@ theme: defaultTheme({
              'backend_AD',
              'backend_LDAP'
           ]
-        }
+        },
+          {
+              text: "Utilisation de l'API",
+              prefix: '/Api',
+              children: [
+                  'filtres',
+                  'photo'
+              ]
+          },
+          {
+              text: "Personalisation de l'UI",
+              prefix: '/Ui',
+              children: [
+                  'personalisation_tuiles',
+              ]
+          }
 
       ],
     },
