@@ -56,26 +56,33 @@ Dans l'interface swagger le filtre se saisit en JSON :
 ## Champs struturels 
 Voici la liste des champs structurels disponibles dans une identité
 
-| Champ                  | Description                                                 |
-|------------------------|-------------------------------------------------------------|
-| **state**              | Etat de l'identité                                          |
-|                        | 0 : indeterminé                                             | 
-|                        | 1 : à valider                                               |
-|                        | 2 : à synchroniser    (envoi aux backends                   |
-|                        | 50 : En cours de synchronisation                            |
-|                        | 99 : synchronisée                                           |
-|                        | -2 : à compléter                                            |
-|                        | -99 : ne plus synchroniser (envoi aux backends)             |
-| **initState**          | Statut d'envoi du mail de réinitialisation du mot de passe  |
-|                        | 0 : le mail n'a jamais été envoyé                           | 
-|                        | 1 : Le mail a été envoyé                                    | 
-|                        | 2 : le compte a été activé                                  | 
-| **dataStatus**         | Etat d'activation de l'identité                             |
-|                        | 0 : l'identité est desactivée                               | 
-|                        | 1 : l'identité est active                                   |
-|                        | -1 : l'identité est supprimée et ne doit plus être importée |
-| **metadata.createdBy** | Utilisateur qui a créé l'identité                           |
-| **metadata.createdAt** | Date de création                                            |
+| Champ                      | Description                                                 |
+|----------------------------|-------------------------------------------------------------|
+| **state**                  | Etat de l'identité                                          |
+|                            | 0 : indeterminé                                             | 
+|                            | 1 : à valider                                               |
+|                            | 2 : à synchroniser    (envoi aux backends                   |
+|                            | 50 : En cours de synchronisation                            |
+|                            | 99 : synchronisée                                           |
+|                            | -2 : à compléter                                            |
+|                            | -99 : ne plus synchroniser (envoi aux backends)             |
+| **initState**              | Statut d'envoi du mail de réinitialisation du mot de passe  |
+|                            | 0 : le mail n'a jamais été envoyé                           | 
+|                            | 1 : Le mail a été envoyé                                    | 
+|                            | 2 : le compte a été activé                                  | 
+| **dataStatus**             | Etat d'activation de l'identité                             |
+|                            | 0 :  Identité non initialisée                               | 
+|                            | 1 :  l'dentité est active                                    |
+|                            | -1 : l'identité est supprimée et ne doit plus être importée |
+|                            | -2 : l'identité doit changer sont mot de passe              |
+|                            | -3 : l'identité est désactivée                              |
+| **lastSyncBackend**        | Dernier envoi de l'identité aux backends                    |
+| **lastSync**               | (TAIGA) date de derniere synchro depuis taiga               |
+| **_id**                    | Index unique de l'identité                                  |
+| **deletedFlag**            | true ou false Identité supprimée                            |
+| **fingerprint**            | Hash de l'identité                                          |
+| **metadata.createdBy**     | Utilisateur qui a créé l'identité                           |
+| **metadata.createdAt**     | Date de création                                            |
 | **metadata.lastUpdatedBy** | Dernier utilisateur qui a modifié l'identité                |
 | **metadata.lastUpdatedAt** | Date de la dernière  modification                           |
 
