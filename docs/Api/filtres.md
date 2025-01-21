@@ -17,16 +17,17 @@ La syntaxe générale du paramètre est :
 
 ### Les opérateurs
 | Filter | Description               |
-|-------|---------------------------|
-| :     | égal                      |
-| #     | nombre égal               |
-| !#    | Nombre non égal           |
-| !:    | Non égal                  |
-| \>    | Nombre plus grand |
-| \>\|  | Nombre plus grand ou égal |
-| \<    | Nombre plus petit         |
-| \<\|  | Nombre plus petit ou égal |
-| \^    | Expression régulière      |
+|--------|---------------------------|
+| :      | égal                      |
+| #      | nombre égal               |
+| !#     | Nombre non égal           |
+| !:     | Non égal                  |
+| \>     | Nombre plus grand         |
+| \>\|   | Nombre plus grand ou égal |
+| \<     | Nombre plus petit         |
+| \<\|   | Nombre plus petit ou égal |
+| \^     | Expression régulière      |
+| @      | dans la liste             |
 
 ### Exemples 
 Vous pouvez tester votre filtre et confectionner votre requete à l'aide de swagger qui est disponible sur l'orchestrator à L'url : https://monOrchestrator:4443/swagger
@@ -53,6 +54,16 @@ Dans l'interface swagger le filtre se saisit en JSON :
 ```
 ![img_1.png](img_1.png)
 
+* Rechercher les identités qui ont le dataStatus à -2 OU -3 (operateur @)
+
+```
+filters[@dataStatus][]=-2&filters[@dataStatus][]=-3
+```
+
+* Rechercher les identités qui ont dataStatus à -2 ET state à 99
+```
+filters[:dataStatus]=-2&filters[:state]=99
+```
 ## Champs struturels 
 Voici la liste des champs structurels disponibles dans une identité
 
