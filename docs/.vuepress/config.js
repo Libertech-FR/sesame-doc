@@ -63,7 +63,8 @@ theme: defaultTheme({
               prefix: '/Api',
               children: [
                   'filtres',
-                  'photo'
+                  'photo',
+                  'exempleapi'
               ]
           },
           {

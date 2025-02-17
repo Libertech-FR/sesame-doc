@@ -76,6 +76,7 @@ Voici la liste des champs structurels disponibles dans une identité
 |                            | 50 : En cours de synchronisation                            |
 |                            | 99 : synchronisée                                           |
 |                            | -2 : à compléter                                            |
+|                            | -3 : en erreur                                              |
 |                            | -99 : ne plus synchroniser (envoi aux backends)             |
 | **initState**              | Statut d'envoi du mail de réinitialisation du mot de passe  |
 |                            | 0 : le mail n'a jamais été envoyé                           | 
@@ -83,7 +84,7 @@ Voici la liste des champs structurels disponibles dans une identité
 |                            | 2 : le compte a été activé                                  | 
 | **dataStatus**             | Etat d'activation de l'identité                             |
 |                            | 0 :  Identité non initialisée                               | 
-|                            | 1 :  l'dentité est active                                    |
+|                            | 1 :  l'identité est active                                  |
 |                            | -1 : l'identité est supprimée et ne doit plus être importée |
 |                            | -2 : l'identité doit changer sont mot de passe              |
 |                            | -3 : l'identité est désactivée                              |
@@ -96,5 +97,18 @@ Voici la liste des champs structurels disponibles dans une identité
 | **metadata.createdAt**     | Date de création                                            |
 | **metadata.lastUpdatedBy** | Dernier utilisateur qui a modifié l'identité                |
 | **metadata.lastUpdatedAt** | Date de la dernière  modification                           |
+
+Champs concernant la fusion d'identité
+
+Quand il y a une fusion d'identité l'identité secondaire complète l'identité primaire et est
+marquée à ne plus synchroniser. 
+
+| Champ                      | Description                                              |
+|----------------------------|----------------------------------------------------------|
+| **srcFusionId**            | _id des identité fusionnée (dans l'identité primaire)    |
+| **destFusionId**           | _id de l'identité fusionnée  (dans l'identité secondaire |
+| **primaryEmployeeNumber**  | employeeNumber principal (present dans l'identité primaire) |
+ |                            | Dans l'identité secondaire son employeeNumber sera renommé F... |              
+
 
 
