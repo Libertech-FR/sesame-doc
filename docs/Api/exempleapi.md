@@ -63,7 +63,7 @@ Pour rechercher tous les identités dont le nom commence par b ou B. Pour ce cas
 
 ```python
 params = {
-        "filters[:inetOrgPerson.sn]": "/¨b/i"
+        "filters[^inetOrgPerson.sn]": "/¨b/i"
     }
 ```
 
