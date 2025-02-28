@@ -10,13 +10,14 @@ description: Configuration des données
 
 Le système de validation d'identité utilise des fichiers de configuration YAML pour définir des règles de validation pour différents types d'objets d'identité. Chaque fichier YAML correspond à une `objectClass` spécifique et définit les attributs requis et leurs types pour cette classe.
 
+
 Les fichiers de validation sont situés : **./configs/sesame-orchestrator/validations**
 ## Validation des champs InetOrgPerson
 
 Les champs de base de l'objet `inetOrgPerson` sont validés par défaut. 
 ### Les champs servant de clé 
-- `employeeNumber`
-- `employeeType`
+- `employeeNumber` (Array of strings)
+- `employeeType` (string)
 
 
 
@@ -129,6 +130,7 @@ Chaque attribut peut avoir des options supplémentaires pour définir des règle
   type: array
   minItems: 2
   ```
+- **uniqueItems** : (boolean) les items doivent être unique 
 
 #### Boolean (Booléen) 
 - *Pas de clés spécifiques*
@@ -195,23 +197,6 @@ Chaque attribut peut avoir des options supplémentaires pour définir des règle
   round: true
   ```
 
-#### Object (Objet)
-- **camelCase**: Convertit les clés de l'objet en camelCase.
-  ```yaml
-  type: object
-  camelCase: true
-  ```
-- **constantCase**: Convertit les clés de l'objet en CONSTANT_CASE.
-  ```yaml
-  type: object
-  constantCase: true
-  ```
-- **noUnknown (propertyNames)**: Définit que l'objet ne peut pas contenir de clés non définies.
-  ```yaml
-  type: object
-  noUnknown: true
-  ```
-
 #### String (Chaîne de caractères)
 - **minLength (min)**: Définit la longueur minimum de la chaîne de caractères.
   ```yaml
@@ -228,16 +213,24 @@ Chaque attribut peut avoir des options supplémentaires pour définir des règle
   type: string
   pattern: '^[a-zA-Z]+$'
   ```
-- **email (format: 'email')**: Définit que la chaîne de caractères doit être un email.
+- **format** : Définit que la chaîne de caractères doit être un email.
   ```yaml
   type: string
   format: 'email'
   ```
-- **url (format: 'url')**: Définit que la chaîne de caractères doit être une URL.
-  ```yaml
-  type: string
-  format: 'url'
-  ```
+  * _date_ : Date complete au format [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6)
+  * _duration_: Durée [RFC3339](https://tools.ietf.org/html/rfc3339#appendix-A)
+  * _uri_: URI complète
+  * _uri-reference_: URI compléte ou partielle URI
+  * _email_: adresse email
+  * _hostname_: Nom de host respectant le  [RFC1034](http://tools.ietf.org/html/rfc1034#section-3.5)
+  * _ipv4_: adresse ipv4
+  * _ipv6_: adresse ipv6
+  * _uuid_: Universally Unique IDentifier according to [RFC4122](http://tools.ietf.org/html/rfc4122).
+  * _number_ : un nombre entier
+  
+  Pour plus de details voir : [documentation ajv-validator](https://github.com/ajv-validator/ajv-formats/blob/master/README.md) 
+
 - **lowercase**: Convertit la chaîne de caractères en minuscule.
   ```yaml
   type: string

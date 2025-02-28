@@ -52,6 +52,14 @@ dans le repertoire d'installation
 ```
 #make sesame-import-taiga
 ```
+Les parametres : 
+* an=XXXX importe l'année XXXX. Si le paramètre n'est pas présent importe l'année en cours.
+* imports= all | ind | pictures (par defaut : all)
+    * all : importe identités et photos 
+    * ind : importe que les identités
+    * pictures : importe que les photos
+* force=1 permet de forcer la réécriture de toutes les identitées 
+
 Si vous voulez importer une année particuliere :
 ```
 #make sesame-import-taiga an=ANNEE
