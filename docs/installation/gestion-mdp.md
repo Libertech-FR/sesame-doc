@@ -92,7 +92,17 @@ COLOR_POSITIVE='#21BA45',
 COLOR_NEGATIVE='#C10015',
 COLOR_INFO='#31CCEC',
 COLOR_WARNING='#F2C037'
+ACTION=menu
+USER_LABEL= Mon email
 ```
+
+### configuration de la page d'accueil
+La page d'accueil peut être configurée pour via une variable d'environnement à mettre dans .env: 
+* Avoir un menu : **ACTION=menu**
+* la page de changement du mot de passe : **ACTION=change**
+* la page de reinitialisation du mot de passe : **ACTION=reset**
+
+### configuration du thème et couleurs
 Se referer au site de site de quasar.dev pour les explications : [Quasar Theme Builder](https://quasar.dev/style/theme-builder)
 
 ## Configuration de la politique de mot de passe 
