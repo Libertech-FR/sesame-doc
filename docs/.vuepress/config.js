@@ -36,7 +36,8 @@ theme: defaultTheme({
              'data',
              'validation',
              'formulaire',
-              'config-gestion-mdp'
+              'config-gestion-mdp',
+              'cyclevie'
           ]
 	},
         {
