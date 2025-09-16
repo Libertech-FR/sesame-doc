@@ -64,6 +64,9 @@ Dans cet exemple toutes les identités qui auront le statut Inactive ou En atten
 ```yml
 identities:
   - sources: ['I']
+    rules: {
+      'inetOrgPerson.departmentNumber': 'etd',
+    }
     trigger: -36d
     target: D
 
