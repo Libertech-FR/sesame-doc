@@ -44,12 +44,9 @@ Rappel des statuts :
 
 | Lettre | statut      |
 |--------|-------------|
-| W      | En attente  |
 | O      | Officiel    |
-| A      | Active      |
-| P      | Provisionné |
 | I      | Inactive    |
-| D      | Supprimé |
+| M      | Manuel      |
 
 * **rules** : Requète mongo de selection des identités concernées (voir la documentation Mongo. Vous pouvez tester directement la règle avec un editeur Mongo)
 
