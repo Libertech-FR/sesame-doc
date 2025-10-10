@@ -3,11 +3,14 @@ import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
-  lang: 'en-US',
+  lang: 'fr-FR',
   base: '/sesame-doc',
   title: 'Sesame',
   description: "Sesame gestionnaire d'identités",
-theme: defaultTheme({
+  plugins: [
+      'vuepress-plugin-mermaidjs'
+  ],
+  theme: defaultTheme({
     // sidebar object
     // pages under different sub paths will use different sidebar
     sidebar: {

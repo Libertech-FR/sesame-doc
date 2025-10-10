@@ -11,12 +11,10 @@ Sésame comprend une gestion de cycle de vie des identités. Elle permet de déc
 ## Activation 
 Par défaut, l’orchestrateur sait gérer le cycle de vie dès lors que le répertoire de configuration est présent dans le conteneur. Montez votre dossier de configuration hôte dans le conteneur.
 
-- Dans docker-compose, section « sesame-orchestrator » → « volumes », ajoutez au choix :
-  - pour ne monter que le cycle de vie :
-    
-    ```
-    - ./configs/sesame-orchestrator/lifecycle:/data/configs/lifecycle
-    ```
+- Dans docker-compose, section « sesame-orchestrator » → « volumes » :
+  ```
+  - ./configs/sesame-orchestrator/lifecycle:/data/configs/lifecycle
+  ```
 
 - Redémarrez votre conteneur :
 
@@ -165,13 +163,4 @@ Une identité peut être exclue des traitements de cycle de vie en positionnant 
 - Au premier démarrage, si le répertoire est vide, des fichiers par défaut sont copiés automatiquement dans `/data/configs/lifecycle`.
 - En cas d’erreur de validation YAML, les logs indiquent le fichier et la cause (schéma invalidé). Corrigez la structure (clés manquantes, types incorrects, etc.).
 - Vérifiez que les états référencés dans `sources`/`target` existent (défaut ou `states.yml`).
-
-### Exemple de flux (illustration)
-
-```mermaid
-stateDiagram-v2
-    [*] --> O: Création/synchronisation
-    O --> I: Règle métier (ex. fin de contrat)
-    I --> D: Trigger 36d (délais)
-    O --> M: Passage manuel
-```
+- Consultez les logs de l’orchestrateur pour les erreurs lors du traitement des règles.
