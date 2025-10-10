@@ -1,4 +1,4 @@
-lang: en-US
+lang: fr-FR
 title: Cycle de vie
 description: Gestion du cycle de vie des identités
 ---
@@ -16,11 +16,6 @@ Par défaut, l’orchestrateur sait gérer le cycle de vie dès lors que le rép
     ```
     - ./configs/sesame-orchestrator/lifecycle:/data/configs/lifecycle
     ```
-  - ou pour monter toute la configuration de l’orchestrateur (recommandé) :
-    
-    ```
-    - ./configs/sesame-orchestrator:/data/configs
-    ```
 
 - Redémarrez votre conteneur :
 
@@ -29,7 +24,7 @@ docker compose up -d
 ```
 
 ## Configuration 
-La configuration se fait à l’aide de fichiers YAML dans le volume monté. L’orchestrateur copie automatiquement des fichiers par défaut si le répertoire est vide.
+La configuration se fait à l’aide de fichiers YAML dans le volume monté (./configs/sesame-orchestrator/lifecycle). L’orchestrateur copie automatiquement des fichiers par défaut si le répertoire est vide.
 
 Chemins côté conteneur :
 
@@ -122,6 +117,8 @@ identities:
 Explication :
 
 - `trigger` : défini à `36d` signifie 36 jours. Vous pouvez utiliser un nombre (jours), ou `Xd`, `Ym`, `Zs`.
+- `rules` : filtre MongoDB (objet) pour sélectionner les identités concernées (rules peut se cummuler avec le trigger de temps).
+- `mutation` : objet appliqué en `$set` avant le changement d’état (permet de modifier des champs de l’identité).
 - `dateKey` (optionnel) : par défaut `lastSync`. Vous pouvez le changer, par ex. `dateKey: 'initInfo.initDate'`.
 - Traitement : ces règles sont évaluées périodiquement par un cron (voir ci-dessous).
 
