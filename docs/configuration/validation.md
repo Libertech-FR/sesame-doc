@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: fr-FR
 title: Validation et description des données
 description: Configuration des données
 ---

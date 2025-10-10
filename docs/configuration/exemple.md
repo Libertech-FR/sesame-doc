@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: fr-FR
 title: Exemple
 description: Exemple d'ajout de champs 
 ---

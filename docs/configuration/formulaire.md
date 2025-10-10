@@ -1,3 +1,9 @@
+---
+lang: fr-FR
+title: Formulaire
+description: Configuration des formulaires
+---
+
 # Formulaire
 
 Il est possible, une fois que le fichier de validation est fait de generer le fichier de configuration pour l'interface de validation 

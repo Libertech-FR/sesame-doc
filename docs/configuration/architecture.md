@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: fr-FR
 title: Architecture
 description: Architecture de l'installation
 ---

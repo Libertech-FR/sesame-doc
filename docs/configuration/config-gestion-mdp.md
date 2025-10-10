@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: fr-FR
 title: Configuration de la politique de mot de passe
 description: Configuration de la politique de mot de passe
 ---

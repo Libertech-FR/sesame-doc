@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: fr-FR
 title: Principe 
 description: Configuration des données
 ---
