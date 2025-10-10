@@ -16,7 +16,7 @@ Par défaut le cycle de vie n'est pas actif. Pour l'activer il suffit d'ajouter 
 ```
 * redémarrer votre container 
 ```
-#docker compose up -d
+docker compose up -d
 ```
 
 ## Configuration 
@@ -67,7 +67,7 @@ identities:
     rules: {
       'inetOrgPerson.departmentNumber': 'etd',
     }
-    trigger: -36d
+    trigger: 36d
     target: D
 
 ```
@@ -76,6 +76,18 @@ La balise **rules** est remplacée par la balise **trigger** . Elle permet de de
 * trigger : nombre negatif representant une periode (jour) d'attente entre les deux statuts 
 Dans l'exemple ci dessus les identitées etant inactive seront supprimées apres un delai de 36 jours de leur passage en inactive
 
+#### **Avec une mutation** de l'enregistrement
+```yml
+identities:
+  - sources: ['I', 'W']
+    rules: {
+     'inetOrgPerson.employeeType': 'TAIGA',
+    }
+    mutation: {
+      'inetOrgPerson.cn': 'mutated',
+    }
+    target: D
+```
 
 
 
