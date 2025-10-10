@@ -88,6 +88,5 @@ identities:
     }
     target: D
 ```
-
-
-
+Il est possible d'ajouter une mutation de l'enregistrement avant le passage au statut cible
+Dans l'exemple ci dessus le champ inetOrgPerson.cn sera modifié avant le passage au statut D
