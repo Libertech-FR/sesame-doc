@@ -1,3 +1,4 @@
+---
 lang: fr-FR
 title: Cycle de vie
 description: Gestion du cycle de vie des identités
