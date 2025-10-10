@@ -1,7 +1,7 @@
 .idea*
 docs/.vuepress/.cache
 docs/.vuepress/.temp
-node_modules/*
+node_modules/
 .DS_Store
 docs/.DS_Store
 docs/.DS_Store
