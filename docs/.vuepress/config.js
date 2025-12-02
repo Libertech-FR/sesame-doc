@@ -77,7 +77,7 @@ export default defineUserConfig({
               children: [
                   'personalisation_tuiles',
               ]
-          }
+          },
         {
           text: 'Upgrades',
           prefix: '/upgrade',
