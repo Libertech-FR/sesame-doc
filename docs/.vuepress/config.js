@@ -80,7 +80,7 @@ export default defineUserConfig({
           },
         {
           text: 'Upgrades',
-          prefix: '/upgrade',
+          prefix: '/upgrades',
           children: [
              'alpha-to-v2'
           ]
