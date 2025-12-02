@@ -78,6 +78,13 @@ export default defineUserConfig({
                   'personalisation_tuiles',
               ]
           }
+        {
+          text: 'Upgrades',
+          prefix: '/upgrade',
+          children: [
+             'alpha-to-v2'
+          ]
+        },
 
       ],
     },
