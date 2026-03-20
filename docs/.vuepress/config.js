@@ -40,7 +40,8 @@ export default defineUserConfig({
              'validation',
              'formulaire',
               'config-gestion-mdp',
-              'cyclevie'
+              'cyclevie',
+              'cron'
           ]
 	},
         {

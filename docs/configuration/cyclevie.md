@@ -135,7 +135,59 @@ identities:
 ```
 `mutation` permet d’appliquer un `$set` des champs avant le passage à l’état cible. Ici, `inetOrgPerson.cn` sera modifié avant de passer à D.
 
-### Planification des triggers (cron)
+### Variables dynamiques et templates
+
+Les champs `rules` et `mutation` supportent des variables dynamiques évaluées à l’exécution.
+Les variables doivent être écrites en template Liquid (`{{ ... }}`).
+
+Exemples valides :
+
+```yml
+mutation: {
+  'example.updatedAtMs': '{{ date.now }}',
+  'example.updatedAtIso': '{{ date.isoNow }}',
+  'example.batchKey': 'batch-{{ date.nowDate | dateFormat: "YYYY-MM-DD" }}',
+}
+```
+
+#### Variables disponibles
+
+- `date.now` : timestamp courant en millisecondes (number)
+- `date.isoNow` : date courante au format ISO (string)
+- `date.nowDate` : date courante (Date)
+- `date.unix` : timestamp courant en millisecondes (number)
+- `date.unixSeconds` : timestamp courant en secondes (number)
+- `date.today` : date du jour (`YYYY-MM-DD`)
+- `date.yesterday` : date de la veille (`YYYY-MM-DD`)
+- `date.tomorrow` : date du lendemain (`YYYY-MM-DD`)
+
+#### Syntaxes supportées
+
+- Template simple : `field: '{{ date.isoNow }}'`
+- Template avec interpolation : `field: 'prefix-{{ date.now }}'`
+- Template avec filtre : `field: '{{ date.nowDate | dateFormat: "YYYY-MM-DD HH:mm:ss" }}'`
+
+#### Filtres Liquid disponibles
+
+- `dateFormat` : formatte une date selon le format Dayjs
+  - Ex. `{{ date.nowDate | dateFormat: "YYYY-MM-DD" }}`
+- `unixMs` : convertit une date en timestamp millisecondes
+  - Ex. `{{ date.nowDate | unixMs }}`
+- `unixSeconds` : convertit une date en timestamp secondes
+  - Ex. `{{ date.nowDate | unixSeconds }}`
+
+#### Comportement d’évaluation
+
+- L’évaluation est faite au runtime (au moment où la règle est exécutée), pas uniquement au chargement des fichiers.
+- Les objets et tableaux imbriqués sont résolus récursivement.
+- Pour une expression template seule (ex. `{{ date.now }}`), la valeur est résolue avec son type utile.
+- En cas d’erreur de rendu Liquid, la valeur d’origine est conservée.
+
+#### Moteur de template
+
+Le rendu de templates utilise [LiquidJS](https://liquidjs.com/).
+
+### Planification des triggers lifecycle (cron)
 
 Les règles avec `trigger` sont exécutées par une tâche planifiée. Le cron est configurable par variable d’environnement :
 
@@ -145,6 +197,8 @@ Exemples d’expressions :
 
 - toutes les heures : `0 * * * *`
 - chaque nuit à 2h30 : `30 2 * * *`
+
+Pour la configuration des tâches cron YAML (`configs/cron/*.yml`) et leurs variables dynamiques, voir la page dédiée : `Configuration > Cron`.
 
 ### Ignorer le cycle de vie pour une identité
 
