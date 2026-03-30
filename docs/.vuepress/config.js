@@ -25,7 +25,7 @@ export default defineUserConfig({
           // prefix will be prepended to relative paths
           prefix: "/installation/",
           children: [
-             'installation-server',  
+             'installation-server',
              'installation-daemon',
              'installation-taiga',
               'gestion-mdp',
@@ -34,12 +34,13 @@ export default defineUserConfig({
         },{
           text: 'Configuration',
           prefix: '/configuration',
-          children: [ 
+          children: [
              'architecture',
              'data',
              'validation',
              'formulaire',
               'config-gestion-mdp',
+              'personalisation_tuiles',
               'cyclevie',
               'cron'
           ]
