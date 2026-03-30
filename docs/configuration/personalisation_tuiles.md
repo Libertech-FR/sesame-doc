@@ -39,6 +39,27 @@ entries:
 * **hideInMenuBar** : si `true`, masque l'entrée de la barre latérale (drawer).
 * **hideInDashboard** : si `true`, masque l'entrée de la page d'accueil (dashboard/tuiles).
 
+### Surcharge des entrées (`entries`) par `name`
+Les entrées par défaut (celles codées en dur côté front) peuvent être **surchargées** dans le fichier `menu.yml`.
+
+La surcharge se fait **d’abord par `name`** :
+* si une entrée fournie dans `entries:` a un `name` qui correspond à celui d’une entrée existante, alors l’entrée existante est **mise à jour**
+* tu peux ainsi changer `label`, `color`, `icon`, `path`, `part`, `hideInMenuBar`, `hideInDashboard`, etc.
+
+À noter sur `acl` :
+* si les deux entrées (défaut + surcharge) ont un champ `acl`, Sesame **fusionne** les listes (`acl` n’est pas écrasé)
+
+Exemple :
+```yaml
+entries:
+  # L'entrée par défaut "Exporter" a pour name: exporter
+  - name: exporter
+    label: Export (Admin uniquement)
+    color: negative
+    roles:
+      - admin
+```
+
 ### Surcharge des sections (`parts`)
 Les sections de la page d'accueil peuvent être surchargées via `parts`.
 
