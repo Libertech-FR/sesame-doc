@@ -1,4 +1,4 @@
-# Personalisation des tuiles de la page d 'accueil'
+# Personalisation des tuiles de la page d'accueil
 Des tuiles peuvent être ajoutées sur la page d'accueil et certaines modifiées.
 
 ## Fichier de configuration 
