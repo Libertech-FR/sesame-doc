@@ -81,6 +81,34 @@ export default defineUserConfig({
               ]
           },
         {
+          text: 'Pages UI',
+          prefix: '/pages/',
+          children: [
+            'index',
+            'login',
+            'sentry-example-page',
+            'settings',
+            'settings/health',
+            'settings/keyrings',
+            'settings/cron',
+            'settings/smtp',
+            'settings/sms',
+            'settings/password-policy',
+            'settings/roles',
+            'settings/agents',
+            'identities',
+            'identities/table',
+            'identities/trash',
+            'identities/outdated',
+            'identities/export',
+            'identities/fusion',
+            'lifecycles/table',
+            'jobs/table',
+            'jobs/details',
+            'audits/table',
+          ]
+        },
+        {
           text: 'Upgrades',
           prefix: '/upgrades',
           children: [
