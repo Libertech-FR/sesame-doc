@@ -1,8 +1,6 @@
 # Personalisation des tuiles de la page d 'accueil'
 Des tuiles peuvent être ajoutées sur la page d'accueil et certaines modifiées.
 
-![img.png](img.png)
-
 ## Fichier de configuration 
 Le fichier de configuration est : ./configs/sesame-app-manager/config/menu.yml
 ```yaml
@@ -66,10 +64,15 @@ Dans le fichier menu.yml on ajoute une entrée:
 ```yaml
   - icon: mdi-account-cancel
     label: Identitées désactivées
+    # name optionnel (sinon auto-déduit de `label`)
+    # name: identitees_desactivees
     path: "/identities?sort[metadata.lastUpdatedAt]=desc&skip=0&filters[:dataStatus]=0"
     color: red-10
+    # rôles ACL optionnels (si vide/absent => visible pour tous, sous réserve des ACL)
+    # roles:
+    #   - DSI
+    # acl optionnel : si fourni, au moins une ACL doit être autorisée
+    # acl:
+    #   - /management/identities
     part: Listes
 ```
-Ce qui donnera dans l'interface : 
-
-![img_1.png](img_1.png)
