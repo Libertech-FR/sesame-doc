@@ -14,18 +14,18 @@ Cette page permet de configurer la **politique de mot de passe** (route `/settin
 - **Toggles** : majuscule/minuscule/chiffre/spéciaux, vérification pwned, reset par SMS.
 - **Attributs identité** : attribut mail alternatif, attribut mobile, URL de redirection.
 - **Rappels d’expiration** :
-  - `passwordExpirationReminderDaysBeforeList` : jalons en jours avant expiration (ex: `[30, 7, 1, 0]` ; `0` = jour d’expiration)
-  - `passwordExpirationReminderTemplatesByDays` : template mail par jalon (clé = jour)
-  - `passwordExpirationReminderTemplate` : template fallback
-  - `passwordExpirationReminderSubjectsByDays` : sujet par jalon (clé = jour)
-  - `passwordExpirationReminderSubject` : sujet fallback
+  - `passwordExpirationReminderSteps` : liste des jalons (par défaut vide)
+  - `passwordExpirationReminderSubject` : sujet **par défaut** (fallback si un jalon n’a pas de sujet)
+  - template de jalon optionnel (si vide, fallback `password_reminder`)
+  - template par défaut implicite côté backend : `password_reminder`
 - **Sauvegarde** : bouton “Sauvegarder les paramètres”.
 
 ## Notes d’implémentation
 
 - Le déclenchement des rappels d’expiration n’est **pas** piloté par un booléen dans la policy.
 - L’activation/désactivation se fait via la tâche cron `identities-password-expiration-reminder` (voir page `/settings/cron`).
-- Le champ `passwordExpirationReminderDaysBefore` est conservé en mode legacy (fallback), mais la configuration recommandée est `passwordExpirationReminderDaysBeforeList`.
+- Le champ `passwordExpirationReminderDaysBefore` est conservé en mode legacy (fallback).
+- Les anciens champs `passwordExpirationReminderDaysBeforeList`, `passwordExpirationReminderTemplatesByDays` et `passwordExpirationReminderSubjectsByDays` restent compatibles mais la configuration recommandée est `passwordExpirationReminderSteps`.
 
 ## Permissions
 

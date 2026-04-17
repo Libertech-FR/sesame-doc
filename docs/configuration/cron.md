@@ -85,9 +85,11 @@ tasks:
 
 Le contenu des emails (jalons, templates, sujets) est défini dans `settings.passwordpolicies` :
 
-- `passwordExpirationReminderDaysBeforeList`
-- `passwordExpirationReminderTemplatesByDays` (+ fallback `passwordExpirationReminderTemplate`)
-- `passwordExpirationReminderSubjectsByDays` (+ fallback `passwordExpirationReminderSubject`)
+- `passwordExpirationReminderSteps` (recommandé)
+  - exemple : `{ daysBefore: 30, template: 'password_reminder_30d', subject: 'Votre mot de passe expirera dans 30 jours' }`
+  - valeur par défaut : `[]` (aucun jalon actif)
+- `passwordExpirationReminderSubject` (sujet par défaut)
+- template par défaut backend (si non fourni sur le jalon) : `password_reminder`
 
 ## Variables dynamiques dans `options`
 
