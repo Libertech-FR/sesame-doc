@@ -54,6 +54,41 @@ yarn run console <handler> --key='value'
 
 Les options booléennes `true` sont passées comme flags (`--flag`), les objets sont sérialisés en JSON.
 
+Exemple :
+
+- `handler: identities-password-expiration-reminder-send`
+- commande exécutée : `yarn run console identities password expiration reminder send`
+
+## Tâche par défaut : rappel d’expiration de mot de passe
+
+Un fichier par défaut est fourni pour piloter les rappels d’expiration via cron :
+
+- `defaults/cron/identities-password-expiration-reminder.yml`
+
+Configuration livrée :
+
+```yml
+tasks:
+  - name: "identities-password-expiration-reminder"
+    description: "Send password expiration reminders based on configured day offsets"
+    enabled: false
+    schedule: "0 8 * * *"
+    handler: "identities-password-expiration-reminder-send"
+    options:
+```
+
+### Activation
+
+1. Copier/ouvrir le fichier dans `configs/cron/identities-password-expiration-reminder.yml`
+2. Passer `enabled` à `true`
+3. Ajuster `schedule` selon le besoin
+
+Le contenu des emails (jalons, templates, sujets) est défini dans `settings.passwordpolicies` :
+
+- `passwordExpirationReminderDaysBeforeList`
+- `passwordExpirationReminderTemplatesByDays` (+ fallback `passwordExpirationReminderTemplate`)
+- `passwordExpirationReminderSubjectsByDays` (+ fallback `passwordExpirationReminderSubject`)
+
 ## Variables dynamiques dans `options`
 
 Les `options` supportent des variables dynamiques évaluées au runtime (à chaque exécution de la tâche).

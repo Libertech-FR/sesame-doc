@@ -26,3 +26,15 @@ Cette page permet de gérer les **tâches planifiées** (route `/settings/cron`)
 - **Liste** : `GET /core/cron`
 - **Logs** : `GET /core/cron/<name>/logs?tail=<n>`
 
+## Tâche liée aux rappels d’expiration mot de passe
+
+- **Nom de tâche** : `identities-password-expiration-reminder`
+- **Défaut** : désactivée (`enabled: false`) dans `defaults/cron/identities-password-expiration-reminder.yml`
+- **Planification par défaut** : `0 8 * * *` (tous les jours à 08:00)
+- **Handler** : `identities-password-expiration-reminder-send`
+- **Commande appelée** : `yarn run console identities password expiration reminder send`
+- **Comportement** :
+  - lit les jalons/sujets/templates dans `settings.passwordpolicies`
+  - envoie les emails pour les jalons correspondants (`J-30`, `J-7`, `J-1`, `J0`, etc.)
+  - évite les doublons via l’historique (`passwordExpiryReminderSentDays`)
+
