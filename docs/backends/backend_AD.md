@@ -304,6 +304,63 @@ L'erreur  ou le message doit être écrite sur la sortie standard (Write-Host)
 
 la variable **debug**  du fichier de configuration, si elle est positionnée à 1, permet de générer le script, de le copier sur le serveur, mais il ne sera pas executé
 
+# Modification des templates 
+Vous pouvez modifier les templates standards en les recopiant dans le repertoire **custom_templates.ps1**
 
+Si un template du meme nom existe dans ce repertoire il sera executé à la place du template standart situé dans **custom_template.ps1**
+Il ne seront pas écrasés lors d'une mise à jour.
+# Le cycle de vie dans le backend 
+Le cycle de vie est gérée par le backend d'une façon un peu différente. 
 
+## Paramétrage (backend >=0.3)
+dans le fichier config.yml une nouvelle clé est gérée : 
+```
+...
+  IDENTITY_LIFECYCLE_CHANGED:
+    script: 'lifecycle.py'
+    onError: 'stop'
+```
+**A noter : sesame-daemon doit être à la version >= 1.0.14**
 
+## Entrée envoyée au backend
+L'entrée envoyée au backend pour la generation des scripts est un peu differente que pour les autres actions
+
+```json
+
+  "concernedTo": "6852cd3980ae416061df5dae",
+  "payload": {
+    "before": {
+      "_id": "6852cd3980ae416061df5dae",
+      "inetOrgPerson": {
+        "cn": "Dupont Gerald",
+        "displayName": "Gérald Dupont",
+        "facsimileTelephoneNumber": "",
+...
+  "after": {
+  "_id": "6852cd3980ae416061df5dae",
+  "inetOrgPerson": {
+  "cn": "Dupont Gerald",
+  "displayName": "Gérald Dupont",
+  "facsimileTelephoneNumber": "",
+
+```
+* Une clé **before** représente l'identité avant modification par le cycle de vie
+* Une clé **after** représente l'identité après modification par le cycle de vie 
+
+## Variables disponibles pour les templates :
+* **e** represente l'identité après modification par le cycle de vie
+* **before** represente l'identité avant la modification
+
+## Nom des templates pour le cycle de vie
+Par défaut l'installation ne donne aucun template pour le cycle de vie, c'est à vous de les créer selon vos besoins
+
+Processus : 
+Le backend cherche un template dans le répertoire **custom_template.ps1** nommé 'X'_'Y'.template
+X etant la valeur de lifecyle précédant la modification
+
+Exemple : si le cycle de vie passe de A à I le backend regardera si un template du nom de A_I.template existe 
+
+Si il n y a pas de template pour cette transition le backend va prendre le template
+**lifecycle.template**
+
+Si aucun des templates existe le backend ne fait rien.
