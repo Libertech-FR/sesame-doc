@@ -242,7 +242,7 @@ Exemple de template (upsertidentity.template)
 
 ```powershell
 try{
-    $tab=Get-ADUser -Filter 'employeeNumber -eq "{{ e.employeeNumber }}" -and employeeType -eq "{{ e.employeeType }}"' -Properties "DistinguishedName"
+    $tab=Get-ADUser -Filter 'employeeNumber -eq "{{ e.employeeNumber[0] }}" -and employeeType -eq "{{ e.employeeType }}"' -Properties "DistinguishedName"
 	if ($tab["DistinguishedName"] -ne "{{ dn }}"){
 	    try{
 	        $dn=$tab["DistinguishedName"]
@@ -260,7 +260,7 @@ catch{
 if ($UserExists -eq $false){
     $np = @{
        Path="{{ path }}"
-       EmployeeNumber="{{ e.employeeNumber }}"
+       EmployeeNumber="{{ e.employeeNumber[0] }}"
        Name="{{ e.cn }}"
        DisplayName="{{ e.displayName }}"
        GivenName="{{ e.givenName }}"
@@ -364,3 +364,11 @@ Si il n y a pas de template pour cette transition le backend va prendre le templ
 **lifecycle.template**
 
 Si aucun des templates existe le backend ne fait rien.
+
+Exemple de template pour le cycle de vie 
+
+```powershell
+Write-Host "lifecycle changed from {{ before.lifecycle }} to {{ e.lifecycle }}"
+Exit 0
+
+```
