@@ -365,10 +365,17 @@ Si il n y a pas de template pour cette transition le backend va prendre le templ
 
 Si aucun des templates existe le backend ne fait rien.
 
-Exemple de template pour le cycle de vie 
+Exemple de template pour le cycle de vie : **lifecycle.template**
 
 ```powershell
 Write-Host "lifecycle changed from {{ before.lifecycle }} to {{ e.lifecycle }}"
+Exit 0
+
+```
+
+Exemple de script avec la transition : **O_A.template**
+```powershell
+Write-Host "O_A lifecycle changed from {{ before.lifecycle }} to {{ e.lifecycle }}"
 Exit 0
 
 ```
