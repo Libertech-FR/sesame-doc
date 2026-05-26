@@ -114,3 +114,74 @@ vous disposez comme dans les templates des variable
 * **rdnValue** contient la valeur du rdn
 
 
+## Gestion du cycle de vie 
+Dans le fichier config.yml une nouvelle clé est gérée :
+```
+...
+  IDENTITY_LIFECYCLE_CHANGED:
+    script: 'lifecycle.py'
+    onError: 'stop'
+```
+**A noter : sesame-daemon doit être à la version >= 1.0.14**
+
+## Entrée envoyée au backend
+L'entrée envoyée au backend pour la generation des scripts est un peu differente que pour les autres actions
+
+```json
+
+  "concernedTo": "6852cd3980ae416061df5dae",
+  "payload": {
+    "before": {
+      "_id": "6852cd3980ae416061df5dae",
+      "inetOrgPerson": {
+        "cn": "Dupont Gerald",
+        "displayName": "Gérald Dupont",
+        "facsimileTelephoneNumber": "",
+...
+  "after": {
+  "_id": "6852cd3980ae416061df5dae",
+  "inetOrgPerson": {
+  "cn": "Dupont Gerald",
+  "displayName": "Gérald Dupont",
+  "facsimileTelephoneNumber": "",
+
+```
+* Une clé **before** représente l'identité avant modification par le cycle de vie
+* Une clé **after** représente l'identité après modification par le cycle de vie 
+
+## Nom des templates pour le cycle de vie
+Par défaut l'installation ne donne qu'un script dummy pour le cycle de vie, c'est à vous de les créer selon vos besoins
+
+Processus :
+Le backend cherche un script dans le répertoire **lifecyle** nommé 'X'_'Y' ou X_Y.py
+X etant la valeur de lifecyle précédant la modification
+
+Exemple : si le cycle de vie passe de A à I le backend regardera si un template du nom de A_I ou A_I.py existe
+
+Si il n y a pas de script pour cette transition le backend va prendre le script 
+**lifecycle.py**.
+
+Si aucun des templates existe le backend ne fait rien.
+
+### Squelette de script python pour le cycle de vie
+
+````
+#!/usr/bin/python3
+#Exemple de script lifecycle
+import sys
+# Import librairie
+sys.path.append('../lib')
+import backend_utils as u
+import backend_ldap as ldap
+
+
+
+def main():
+    # lecture json sur l'entree standart
+    content=u.readjsoninput()
+    #retour de l'execution au daemon
+    return print(u.returncode(0,'lifecycle.py'))
+
+if __name__ == '__main__':
+    main()
+````
