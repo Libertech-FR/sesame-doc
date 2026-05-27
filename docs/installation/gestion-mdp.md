@@ -109,5 +109,6 @@ Se referer au site de site de quasar.dev pour les explications : [Quasar Theme B
 
 Voir le chapitre [Confifuration de la politique de mot de passe](/sesame-doc/configuration/config-gestion-mdp.html)
 
-## Modèles des mails 
-voir la section configuration [/sesame-doc/configuration/config-gestion-mdp.html](/sesame-doc/configuration/config-gestion-mdp.html)
+## Modèles des mails
+
+Voir [Templates de mails](/sesame-doc/configuration/mail-templates.html) et [Envoi depuis les identités](/sesame-doc/pages/settings/mail-templates.html). Pour le montage Docker historique : [config gestion MDP](/sesame-doc/configuration/config-gestion-mdp.html#modele-des-mails).

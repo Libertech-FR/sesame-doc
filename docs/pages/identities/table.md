@@ -14,9 +14,10 @@ Cette page documente l’écran de liste des identités (route `/identities/tabl
 
 - **Table + panneau** : composant `sesame-core-twopan` (titre “Gestion des identités”).
 - **Filtres** : `sesame-core-pan-filters` (mode “complex”), placeholder “Rechercher par nom, prénom, email, …”.
-- **Actions de masse** (sur sélection multiple) :
+- **Actions de masse** (sur sélection multiple, identités synchronisées) :
   - “Mettre à synchroniser” (`mdi-sync`)
-  - “Envoyer le mail d'invitation” (`mdi-email-arrow-right`)
+  - “Envoyer le mail d'invitation” (`mdi-email-arrow-right`) — flux `initaccount` / `POST /management/passwd/initmany`
+  - “Envoyer un mail (template)” (`mdi-email`) — modale templates `mail_*` (sujet, destinataires, variables, aperçu)
   - “Supprimer en masse” (`mdi-delete`)
   - “Nettoyer la sélection” (`mdi-cancel`)
 - **Création** : bouton `+` vers `/identities/table/<NewTargetId>?schema=inetOrgPerson` (soumis à permission `create` sur `/management/identities`).
@@ -29,6 +30,7 @@ Cette page documente l’écran de liste des identités (route `/identities/tabl
 - **Liste** : `GET /management/identities` (pagination via `usePagination()`).
 - **Changement d’état** : `PATCH /management/identities/state` (mise à jour par lot).
 - **Initialisation mot de passe (invitation)** : `POST /management/passwd/initmany`.
+- **Envoi template mail (masse)** : `POST /management/mail/sendmany` (voir [Envoi de mails (templates)](../settings/mail-templates.html)).
 - **Suppression (backend)** : `POST /core/backends/delete`.
 
 ## Détail d’une identité (`/identities/table/:_id`)
@@ -37,5 +39,6 @@ Cette page documente l’écran de liste des identités (route `/identities/tabl
 - **Onglets** : l’écran de détail reprend les “tabs” (fiche/audits/jobs/lifecycle/debug) quand l’identité n’est pas “nouvelle” et selon permissions.
 - **Chargement** : `GET /management/identities/<id>` (404 si inexistante).
 - **Création** : si `:_id === NewTargetId`, l’écran initialise une identité vide (state `TO_CREATE`) et permet la saisie.
+- **Envoi template mail** : même modale que en liste (`POST /management/mail/sendmany`), pour une identité synchronisée.
 
 

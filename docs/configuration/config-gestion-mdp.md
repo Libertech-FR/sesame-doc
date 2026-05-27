@@ -61,7 +61,10 @@ SESAME_FRONT_MDP="https://monsite.dechanegementdemotdepasse.com"
 ```
 Vous devez redemarrer Sesame-oechstrateur après cette modification
 
-## Modèle des mails 
+## Modèle des mails
+
+> Documentation à jour : [Templates de mails](mail-templates.html) (conventions `mail_*`, envoi manuel, API, variables).
+
 Vous pouvez genérer votre propre modèle de mail. Voici les étapes à faire pour mettre à jour votre docker-compose.yml. Si l'installation est nouvelle vous pouvez sauter cette étape
 * Créer dans configs/orchestrator un repertoire mail-templates
 * Modifier docker-compose pour monter ce répertoire : 

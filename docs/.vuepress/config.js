@@ -40,6 +40,7 @@ export default defineUserConfig({
              'validation',
              'formulaire',
               'config-gestion-mdp',
+              'mail-templates',
               'personalisation_tuiles',
               'cyclevie',
               'cron'
@@ -92,6 +93,7 @@ export default defineUserConfig({
             'settings/keyrings',
             'settings/cron',
             'settings/smtp',
+            'settings/mail-templates',
             'settings/sms',
             'settings/password-policy',
             'settings/roles',
