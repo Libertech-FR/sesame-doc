@@ -91,6 +91,51 @@ Le contenu des emails (jalons, templates, sujets) est défini dans `settings.pas
 - `passwordExpirationReminderSubject` (sujet par défaut)
 - template par défaut backend (si non fourni sur le jalon) : `password_reminder`
 
+## Tâche par défaut : re-check HIBP (Pwned Passwords)
+
+Fichier fourni : `defaults/cron/identities-pwned-recheck.yml`
+
+Configuration livrée :
+
+```yml
+tasks:
+  - name: "identities-pwned-recheck"
+    description: "Re-check HIBP (pwned passwords) for stored password history fingerprints"
+    enabled: false
+    schedule: "0 3 * * *"
+    handler: "identities-pwned-recheck"
+    options:
+      limit: 500
+```
+
+### Prérequis
+
+- Policy : `pwnedRecheckEnabled=true` et historique des mots de passe actif.
+- Variable `SESAME_PASSWORD_HISTORY_HIBP_KEY` configurée sur l'orchestrateur.
+- Entrées d'historique avec `hibpSha1Enc` renseigné (créées après activation du stockage d'empreintes).
+
+### Activation
+
+1. Ouvrir ou copier le fichier dans `configs/cron/identities-pwned-recheck.yml`.
+2. Passer `enabled` à `true`.
+3. Ajuster `schedule` si besoin (défaut : tous les jours à 03:00).
+4. Optionnel : modifier `options.limit` (nombre max d'entrées traitées par exécution, défaut 500).
+
+Vous pouvez aussi activer la tâche depuis l'interface **Paramètres → Cron** (`/settings/cron`).
+
+### Comportement
+
+- **Handler** : `identities-pwned-recheck` → commande `yarn run console identities pwned recheck`.
+- Sélectionne les entrées d'historique ayant une empreinte (`hibpSha1Enc`) dont `hibpLastCheckAt` est absent ou plus ancien que `pwnedRecheckMaxAgeSeconds` (policy).
+- Déchiffre l'empreinte, appelle `https://api.pwnedpasswords.com/range/<prefix>` (k-anonymity), met à jour `hibpLastCheckAt` et `hibpPwnCount`.
+- Si `hibpPwnCount > 0`, applique `pwnedRecheckAction` : `none` (log uniquement), `notify` (email), `expire` (forcer changement de mot de passe).
+
+### Test manuel
+
+```bash
+yarn run console identities pwned recheck --limit=10
+```
+
 ## Variables dynamiques dans `options`
 
 Les `options` supportent des variables dynamiques évaluées au runtime (à chaque exécution de la tâche).

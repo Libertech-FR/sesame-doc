@@ -37,6 +37,63 @@ Ces deux limites sont representé dans l'interface de changement de mot de passe
 * Caractères obligatoires : Vous pouvez régler quels caractères obligatoires doit comporter le nouveau mot de passe 
 * Vérifier si le mot de passe est connu avec haveibeenpwned (voir [https://haveibeenpwned.com/](https://haveibeenpwned.com/)). Si le mot de passe est connu l'utilisateur ne pourra pas l'utiliser
 
+### Vérification HIBP et empreintes planifiées
+
+Deux niveaux complémentaires :
+
+| Option (interface) | Champ API | Effet |
+| --- | --- | --- |
+| Vérifier les mots de passe compromis | `checkPwned` | Refus immédiat à la saisie si le mot de passe est dans HIBP (k-anonymity) |
+| Stockage des empreintes HIBP | `pwnedRecheckEnabled` | Enregistre une empreinte SHA-1 **chiffrée** dans l'historique pour re-vérifier plus tard via cron |
+
+Le stockage d'empreintes **nécessite** :
+
+- l'historique des mots de passe (`passwordHistoryEnabled`, activé par défaut) ;
+- `checkPwned` activé ;
+- la variable d'environnement `SESAME_PASSWORD_HISTORY_HIBP_KEY` sur l'orchestrateur.
+
+#### Génération de la clé
+
+Depuis le dépôt `sesame-orchestrator` :
+
+```bash
+make hibp-key-hex
+# affiche : SESAME_PASSWORD_HISTORY_HIBP_KEY=<64_caracteres_hex>
+
+# alternative base64 (32 octets décodés)
+make hibp-key-b64
+```
+
+Formats acceptés :
+
+- **Hex** : exactement 64 caractères hexadécimaux (32 octets) ;
+- **Base64** : chaîne qui décode en 32 octets.
+
+#### Configuration Docker / `.env`
+
+Ajouter dans le fichier d'environnement de **sesame-orchestrator** :
+
+```env
+SESAME_PASSWORD_HISTORY_HIBP_KEY=votre_cle_generee
+```
+
+Puis redémarrer le conteneur. Sans cette clé, l'interface désactive le toggle « Stockage des empreintes HIBP » et la sauvegarde de la policy avec `pwnedRecheckEnabled=true` est refusée.
+
+#### Activation dans l'interface
+
+1. Menu **Paramètres → Politique de mot de passe**.
+2. Activer **Vérifier les mots de passe compromis**.
+3. Activer **Stockage des empreintes HIBP (Pwned Passwords)** (si la clé est valide).
+4. Régler **Âge max avant re-check HIBP** (secondes) — par défaut 7 jours.
+5. Sauvegarder.
+6. Activer la tâche cron `identities-pwned-recheck` (voir [Configuration cron](cron.html#tache-par-defaut-re-check-hibp-pwned-passwords)).
+
+#### Sécurité et rotation de clé
+
+- Le mot de passe en clair n'est **pas** stocké pour HIBP : seule l'empreinte SHA-1 chiffrée (`hibpSha1Enc`).
+- Le serveur peut déchiffrer l'empreinte **uniquement** avec `SESAME_PASSWORD_HISTORY_HIBP_KEY` pour interroger l'API HIBP en mode *range* (5 premiers caractères du hash envoyés, reste comparé localement).
+- **Rotation de clé** : sans ré-encryptage des entrées existantes, les anciennes empreintes ne pourront plus être re-vérifiées (statut « déchiffrement impossible » côté cron).
+
 * Réinitialisez par SMS : L'utilisateur aura le choix de recevoir son code de réinitialisation par mail ou par SMS
 ### Les paramêtres d'envoi
 #### Initialisation du mot de passe 
