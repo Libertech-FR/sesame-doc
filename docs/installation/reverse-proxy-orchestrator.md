@@ -52,9 +52,11 @@ En production, **ne pas** définir `NUXT_PUBLIC_SOCKET_IO_POLLING_ONLY=true` : c
 
 ## Nginx
 
-### Configuration recommandée
+### Exemple complet (validé en production)
 
-Utiliser une `map` pour gérer correctement l'en-tête `Connection` lors des upgrades WebSocket :
+Redirection HTTP → HTTPS, un seul vhost `443` vers Nuxt `:3000` (REST + WebSocket Socket.IO).
+
+La `map` se déclare **au niveau `http`** (dans `nginx.conf` ou un fichier inclus) :
 
 ```nginx
 map $http_upgrade $connection_upgrade {
@@ -63,7 +65,13 @@ map $http_upgrade $connection_upgrade {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 80;
+    server_name sesame.example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
     server_name sesame.example.com;
 
     # ssl_certificate ...
@@ -89,11 +97,30 @@ server {
 }
 ```
 
-Sur l'hôte (sans réseau Docker `reverse`), remplacer l'upstream par `http://127.0.0.1:3000` ou le port publié (ex. `3002`).
+Sur l'hôte (sans réseau Docker `reverse`), remplacer `http://sesame-orchestrator:3000` par `http://127.0.0.1:3000` ou le port publié (ex. `3002`).
+
+Après modification :
+
+```bash
+nginx -t && nginx -s reload
+```
+
+### Erreurs fréquentes
+
+::: danger Configuration incomplète
+Sans `proxy_http_version 1.1` et les en-têtes `Upgrade` / `Connection` **à l'intérieur** du bloc `location /`, la console affiche :
+
+`WebSocket connection to 'wss://…/api/socket.io/…' failed`
+:::
+
+| Piège | Conséquence | Correction |
+| --- | --- | --- |
+| `proxy_set_header` **en dehors** de `location /` | En-têtes non appliqués au proxy | Tout regrouper dans `location /` |
+| Pas de directives WebSocket | Échec WS, repli polling ou erreurs répétées | Ajouter `proxy_http_version 1.1`, `Upgrade`, `Connection` |
+| Vhost `listen 4000` vers l'API | Exposition inutile, routage confus | Un seul point d'entrée : `443` → Nuxt `:3000` |
+| `proxy_pass` vers le port `4000` | Socket.IO et auth IP cassés | Cibler `sesame-orchestrator:3000` uniquement |
 
 ### Variante minimale
-
-Équivalent des trois directives WebSocket courantes :
 
 ```nginx
 location / {
@@ -112,7 +139,7 @@ location / {
 | --- | --- |
 | `proxy_http_version 1.1` | Requis pour l'upgrade WebSocket |
 | `proxy_set_header Upgrade $http_upgrade` | Transmet la demande d'upgrade du navigateur |
-| `proxy_set_header Connection "upgrade"` | Maintient le tunnel WebSocket vers Nuxt |
+| `proxy_set_header Connection $connection_upgrade` | Maintient le tunnel WebSocket vers Nuxt |
 
 ---
 
@@ -189,7 +216,23 @@ Après mise en place :
 
 | Symptôme | Cause probable | Action |
 | --- | --- | --- |
+| `WebSocket connection to 'wss://…/api/socket.io/…' failed` | Directives WS absentes ou hors `location` | Voir [Erreurs fréquentes](#erreurs-fréquentes) |
 | `Invalid frame header` (console navigateur) | Upgrade WebSocket non proxifié | Vérifier les directives WS ci-dessus |
 | Socket.IO reste en `polling` uniquement | Reverse-proxy sans support WS, ou `NUXT_PUBLIC_SOCKET_IO_POLLING_ONLY=true` | Corriger la config proxy / variables d'env |
-| Auth « IP non autorisée » avec `127.0.0.1` | `SESAME_TRUST_PROXY=0` ou en-têtes `X-Forwarded-For` absents | Activer `SESAME_TRUST_PROXY=1` et transmettre les en-têtes IP |
-| Fonctionne en local, échoue derrière le proxy | Config WebSocket manquante sur Nginx/Apache | Appliquer ce guide |
+| Auth « IP non autorisée » avec `127.0.0.1` | `SESAME_TRUST_PROXY=0` ou en-têtes `X-Forwarded-For` absents | Activer `SESAME_TRUST_PROXY=1` et transmettre les en-têtes IP dans `location /` |
+| Fonctionne en local, échoue derrière le proxy | Config WebSocket manquante sur Nginx/Apache | Appliquer l'exemple complet ci-dessus |
+
+### Tests sur le serveur
+
+```bash
+curl -sI "http://sesame-orchestrator:3000/api/socket.io/?EIO=4&transport=polling"
+
+curl -i -N \
+  -H "Connection: Upgrade" \
+  -H "Upgrade: websocket" \
+  -H "Sec-WebSocket-Version: 13" \
+  -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
+  "http://sesame-orchestrator:3000/api/socket.io/?EIO=4&transport=websocket"
+```
+
+Réponse attendue pour le second test : `HTTP/1.1 101 Switching Protocols`.
