@@ -72,6 +72,10 @@ Mettez vos certificats dans ./certificates
 
 ## Serveur orchestrator (Méthode par reverse proxy)
 
+::: tip Configuration WebSocket (Socket.IO)
+Le frontal d'administration utilise Socket.IO sur `/api/socket.io` (temps réel : jobs, backends, cron). Le reverse-proxy doit supporter l'upgrade WebSocket et router **tout** le trafic vers le port Nuxt (`3000`), pas vers l'API (`4000`). Voir le guide détaillé : [Reverse-proxy — orchestrator](./reverse-proxy-orchestrator.md).
+:::
+
 Un script est disponible pour l installation du reverse sur la machine docker hébergant l'orchestrator et le frontal de d'administration
 * créez un répertoire ex: "/data/revproxy" et allez dans ce répertoire
 * télécharger le script

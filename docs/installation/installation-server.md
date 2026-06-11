@@ -109,3 +109,10 @@ Vous pouvez vous connecter à l interface via http://votreserveur:3000
 ```
 
 L'etape suivante est l'installation des imports specifiques
+
+## Exposition HTTPS (reverse-proxy)
+
+Pour exposer l'interface en production derrière Nginx ou Apache (TLS, WebSocket Socket.IO, allowlist IP), consultez :
+
+- [Reverse-proxy — orchestrator](./reverse-proxy-orchestrator.md)
+- [Architecture de sécurité](./architecture-de-securite.md)

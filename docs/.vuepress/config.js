@@ -29,7 +29,8 @@ export default defineUserConfig({
              'installation-daemon',
              'installation-taiga',
               'gestion-mdp',
-              'architecture-de-securite'
+              'architecture-de-securite',
+              'reverse-proxy-orchestrator'
           ],
         },{
           text: 'Configuration',
