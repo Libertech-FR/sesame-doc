@@ -360,6 +360,9 @@ X etant la valeur de lifecyle précédant la modification
 
 Exemple : si le cycle de vie passe de A à I le backend regardera si un template du nom de A_I.template existe 
 
+Si il n'y a pas de template pour vette transition le backend va chercher  un template nommé _Y.template (Y étant la valeur du cycle de vie).
+Ce template permet de gérer nimporte quel état vers un état déterminé. 
+
 Si il n y a pas de template pour cette transition le backend va prendre le template
 **lifecycle.template**
 
