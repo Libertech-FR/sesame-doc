@@ -1,8 +1,8 @@
-# Backend LDAP
+# Backend Samba AD
 
 télechargez le paquet debian (.deb) avec ce lien
 
-[https://github.com/Libertech-FR/sesame-backend-sambaad/releases](https://github.com/Libertech-FR/sesame-backend-ldap/releases/)
+https://github.com/Libertech-FR/sesame-backend-sambaad/releases/download/v0.0.5/sesame-backend-sambaad_0.0.5_amd64.deb
 
 ```
 # dpkg -i sesame-backend-sambaad_0.0.X_amd64.deb 
