@@ -63,7 +63,8 @@ export default defineUserConfig({
              'backends',
              'librairie_python',
              'backend_AD',
-             'backend_LDAP'
+             'backend_LDAP',
+              'backend_sambaAD'
           ]
         },
           {
