@@ -79,6 +79,7 @@ Voici la liste des champs structurels disponibles dans une identité
 |                            | -3 : en erreur                                              |
 |                            | -99 : ne plus synchroniser (envoi aux backends)             |
 | **initState**              | Statut d'envoi du mail de réinitialisation du mot de passe  |
+|                            | -1 : l'invitation est périmée (hors TTL)                    | 
 |                            | 0 : le mail n'a jamais été envoyé                           | 
 |                            | 1 : Le mail a été envoyé                                    | 
 |                            | 2 : le compte a été activé                                  | 
