@@ -26,10 +26,10 @@ SESAME_IDENTITY_SYNC_MODE=manual|auto
 * manual = mode manuel (mode par defaut si la variable n'existe pas)
 * auto = mode auto
 ```
-## Pas de message explicite quand il y a une erreur dans l'identité ( à la modification ou creation) 
+### Pas de message explicite quand il y a une erreur dans l'identité ( à la modification ou creation) 
 l'interface affichait 'erreur lors de la sauvegarde de l'identité' sans indiquer où est l'erreur. Maintenant l'erreur est explicitement indiquée
 
-## identities-search-fields.yml non recopié dans config
+### identities-search-fields.yml non recopié dans config
 Le fichier par defaut identities-search-fields.yml n'etait pas copié dans config
 si il n'existait pas. 
 
@@ -44,18 +44,18 @@ fields:
   - additionalFields.attributes.supannPerson.edupersonprincipalname
 
 ```
-## correction de detection des doublons
+### correction de detection des doublons
 Il etait impossible d'éditer une fiche fusionnée. Une erreur indiquait que luid ou le mail existait déjà
 
 L'exclusion pour l'unicité du mail et de l'uid tiend compte maintenant de l'attribut **destFusionId**
 
-## correction filtre dans la page de la corbeille
+### correction filtre dans la page de la corbeille
 Le filtre dans la page de la corbeille ne fonctionnait pas 
 
-## Rafraichissement de la liste dans le panneau gauche des pages
+### Rafraichissement de la liste dans le panneau gauche des pages
 Le rafraichissement de la liste du panneau gauche ne se faisait pas de manière aléatoire. Le probleme est corrigé
 
-## Refactoring des pages des invitations périmées et envoyées
+### Refactoring des pages des invitations périmées et envoyées
 Le pages d'affichage des pages des envois d'invitation sont maintenant fonctionnelles 
 
 Un nouveau mécanisme a été écrit. Une tache cron déclenchée toutes les heures vérifie si les invitations envoyées sont arrivées à écheance et change le champ **initState** à -1
@@ -72,3 +72,7 @@ tasks:
     options:
 ```
 
+### Edition d'une cron crash l'application
+L'edition d'une cron lors de **enregistrer** crashait l'application.
+
+Ce point est corrigé.
