@@ -16,8 +16,7 @@ Pour y acceder depuis l'interface de Sesame :
 
 Cliquez sur le menu "Politique de mot de passe " : 
 
-![](.config-gestion-mdp_images/5060f9da.png)
-
+![img.png](.config-gestion-mdp_images/img.png)
 ### Les differents paramètres de composition du mot de passe 
 * Longueur minimale : Le mot de passe devra au moins avoir cette longueur
 * Entropie minimale : Le mot de passe devra au moins avoir ce score voir [Entropie de Shannon](https://fr.wikipedia.org/wiki/Entropie_de_Shannon)
@@ -95,6 +94,9 @@ Puis redémarrer le conteneur. Sans cette clé, l'interface désactive le toggle
 - **Rotation de clé** : sans ré-encryptage des entrées existantes, les anciennes empreintes ne pourront plus être re-vérifiées (statut « déchiffrement impossible » côté cron).
 
 * Réinitialisez par SMS : L'utilisateur aura le choix de recevoir son code de réinitialisation par mail ou par SMS
+### Historique des mots de passe
+Si l'historique des mots de passe est activé l'utilisateur ne pourra pas remettre le meme mot de passe pendant un temps donné
+
 ### Les paramêtres d'envoi
 #### Initialisation du mot de passe 
 L'utilisateur recevra un lien pour activer son compte et définir son mot de passe. Cet email est envoyé sur l'adresse mail definie dans l'attribut paramétré

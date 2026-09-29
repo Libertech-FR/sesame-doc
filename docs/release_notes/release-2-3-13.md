@@ -1,7 +1,7 @@
 # Pre Release 2.3.13
 Ceci est une pre-release, vous pouvez la tester en changeant dans docker-compose.yml le tag **latest** par **main**
 ```
-ghcr.io/libertech-fr/sesame-orchestrator:main
+ghcr.io/libertech-fr/sesame-orchestrator:unstable
 ```
 
 ## Change logs
