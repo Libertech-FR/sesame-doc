@@ -116,7 +116,8 @@ export default defineUserConfig({
                     text: 'Notes de release',
                     prefix: '/release_notes/',
                     children: [
-                        'release-2-3-13'
+                        'release-2-3-13',
+                        'release-2-3-15'
                     ]
                 },
 
