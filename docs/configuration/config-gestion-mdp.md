@@ -128,16 +128,7 @@ Vous pouvez genérer votre propre modèle de mail. Voici les étapes à faire po
 * Créer dans configs/orchestrator un repertoire mail-templates
 * Modifier docker-compose pour monter ce répertoire : 
 
-Dans le paragraphe volumes de sesame-orchestrator
-```yaml
-    - ./configs/sesame-orchestrator/mail-templates:/data/templates 
-```
-* Copier les deux modèles dans le repertoire ./configs/sesame-orchestrator/mail-templates
-```shell
-cd ./configs/sesame-orchestrator/mail-templates
-curl -L 'https://raw.githubusercontent.com/Libertech-FR/sesame-orchestrator/main/templates/initaccount.hbs' --output initaccount.hbs
-curl -L "https://raw.githubusercontent.com/Libertech-FR/sesame-orchestrator/main/templates/resetaccount.hbs" --output resetaccount.hbs
-```
+
 ## Faire son modèle de mail 
 Les élements variables liés à l'identité sont entre double crochet '\{ \{ variable \} \}'
 

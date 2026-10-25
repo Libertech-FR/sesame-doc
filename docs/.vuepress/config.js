@@ -117,7 +117,8 @@ export default defineUserConfig({
                     prefix: '/release_notes/',
                     children: [
                         'release-2-3-13',
-                        'release-2-3-15'
+                        'release-2-3-15',
+                        'release-2-4-0'
                     ]
                 },
 

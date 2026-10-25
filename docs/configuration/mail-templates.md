@@ -16,17 +16,18 @@ Sesame-Orchestrator utilise des fichiers **Handlebars** (`.hbs`) pour le rendu H
 | Variables UI | `configs/mail/mail_templates.yml` | Variables proposées dans la modale d’envoi manuel |
 | Valeurs par défaut | `defaults/mail/mail_templates.yml` | Copié vers `configs/mail/` au premier démarrage si absent |
 
-En déploiement Docker, monter le répertoire des templates sur `/data/templates` (voir aussi [Configuration gestion MDP](config-gestion-mdp.html#modele-des-mails)).
 
-Exemple de volume :
-
-```yaml
-- ./configs/sesame-orchestrator/templates:/data/templates
-```
-
-Le fichier `configs/mail/mail_templates.yml` peut être monté ou versionné séparément selon votre installation.
 
 ## Types de templates
+Les templates peuvent être directement ajoutés au format mjml ou au format html (*.hbs).
+vous pouvez consulter la documentation pour le format mjml : [https://mjml.io/](https://mjml.io/). 
+
+Ce site propose un éditeur en ligne [https://mjml.io/try-it-live](https://mjml.io/try-it-live) et de nombreux modèles
+
+![](.config-gestion-mdp_images/084e8a86.png)
+
+Si le fichier est un fichier .mjml il sera converti automatiquement en .hbs. Dans ce cas ne modifiez pas le fichier hbs directement
+car il sera reecrasé.
 
 ### Templates personnalisables (`mail_*`)
 
@@ -39,6 +40,8 @@ Exemples fournis :
 | `mail_welcome.hbs` | Message de bienvenue |
 | `mail_custom_notification.hbs` | Notification générique (titre, message, CTA) |
 | `mail_security_alert.hbs` | Alerte sécurité (ex. mot de passe compromis) |
+
+
 
 ### Templates internes Sesame (sans préfixe `mail_`)
 
