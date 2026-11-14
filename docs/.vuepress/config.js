@@ -119,7 +119,8 @@ export default defineUserConfig({
                         'release-2-3-13',
                         'release-2-3-15',
                         'release-2-4-0',
-                        'release-2-4-1'
+                        'release-2-4-1',
+                        'release-daemon-1-0-19'
                     ]
                 },
 
